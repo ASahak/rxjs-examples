@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _defer } from './operators';
+import { _emit } from './operators';
 
-_defer();
+_emit();

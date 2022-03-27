@@ -1,4 +1,4 @@
-import { defer, fromEvent, interval } from 'rxjs';
+import { defer, fromEvent, interval, empty } from 'rxjs';
 
 export default () => {
     const clicksOrInterval = defer(function () {
