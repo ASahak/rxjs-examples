@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _emit } from './operators';
+import { _empty } from './operators';
 
-_emit();
+_empty();
