@@ -29,6 +29,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
     "rxjs": "^7.5.5"
   }
 }

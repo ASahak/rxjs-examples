@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _combineLatestWith, _combineLatestAll } from './operators';
+import { _bindNodeCallback } from './operators';
 
-_combineLatestAll();
+_bindNodeCallback();

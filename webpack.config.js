@@ -7,6 +7,11 @@ module.exports = {
         "path": __dirname + '/dist',
         "filename": "bundle.js"
     },
+    resolve: {
+        fallback: {
+            "fs": false
+        },
+    },
     watch: true,
     devServer: {
         static : {

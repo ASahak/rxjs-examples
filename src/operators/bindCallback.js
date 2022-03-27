@@ -17,7 +17,7 @@ export default () => {
     }
 
     const boundSyncFn = bindCallback(iCallMyCallbackSynchronously);
-    const boundAsyncFn = bindCallback(iCallMyCallbackSynchronously, null, asyncScheduler);
+    const boundAsyncFn = bindCallback(iCallMyCallbackSynchronously, null /*resultSelector*/, asyncScheduler);
 
     boundSyncFn().subscribe(() => console.log('I was sync!'));
     boundAsyncFn().subscribe(() => console.log('I was async!'));
