@@ -7,3 +7,4 @@ export { default as _defer } from './defer';
 export { default as _empty } from './empty';
 export { default as _from } from './from';
 export { default as _fromEvent } from './fromEvent';
+export { default as _fromEventPattern } from './fromEventPattern';

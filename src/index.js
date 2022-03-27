@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _fromEvent } from './operators';
+import { _fromEventPattern } from './operators';
 
-_fromEvent();
+_fromEventPattern();
