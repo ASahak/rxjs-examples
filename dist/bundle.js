@@ -11,13 +11,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_bindCallback": () => (/* reexport safe */ _bindCallback__WEBPACK_IMPORTED_MODULE_3__["default"]),
 /* harmony export */   "_bindNodeCallback": () => (/* reexport safe */ _bindNodeCallback__WEBPACK_IMPORTED_MODULE_4__["default"]),
 /* harmony export */   "_combineLatestAll": () => (/* reexport safe */ _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   "_combineLatestWith": () => (/* reexport safe */ _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "_combineLatestWith": () => (/* reexport safe */ _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   "_defer": () => (/* reexport safe */ _defer__WEBPACK_IMPORTED_MODULE_5__["default"])
 /* harmony export */ });
 /* harmony import */ var _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(53);
 /* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(61);
 /* harmony import */ var _bindCallback__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(67);
 /* harmony import */ var _bindNodeCallback__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(80);
+/* harmony import */ var _defer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(83);
+
 
 
 
@@ -3658,6 +3661,213 @@ function bindNodeCallback(callbackFunc, resultSelector, scheduler) {
 }
 //# sourceMappingURL=bindNodeCallback.js.map
 
+/***/ }),
+/* 83 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(84);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(85);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(86);
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const clicksOrInterval = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.defer)(function () {
+        return Math.random() > 0.5
+            ? (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.fromEvent)(document, 'click')
+            : (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.interval)(1000);
+    });
+    clicksOrInterval.subscribe(x => console.log(x));
+});
+
+
+/***/ }),
+/* 84 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "defer": () => (/* binding */ defer)
+/* harmony export */ });
+/* harmony import */ var _Observable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _innerFrom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(34);
+
+
+function defer(observableFactory) {
+    return new _Observable__WEBPACK_IMPORTED_MODULE_0__.Observable(function (subscriber) {
+        (0,_innerFrom__WEBPACK_IMPORTED_MODULE_1__.innerFrom)(observableFactory()).subscribe(subscriber);
+    });
+}
+//# sourceMappingURL=defer.js.map
+
+/***/ }),
+/* 85 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fromEvent": () => (/* binding */ fromEvent)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
+/* harmony import */ var _observable_innerFrom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(34);
+/* harmony import */ var _Observable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(3);
+/* harmony import */ var _operators_mergeMap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(59);
+/* harmony import */ var _util_isArrayLike__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(35);
+/* harmony import */ var _util_isFunction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
+/* harmony import */ var _util_mapOneOrManyArgs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(24);
+
+
+
+
+
+
+
+var nodeEventEmitterMethods = ['addListener', 'removeListener'];
+var eventTargetMethods = ['addEventListener', 'removeEventListener'];
+var jqueryMethods = ['on', 'off'];
+function fromEvent(target, eventName, options, resultSelector) {
+    if ((0,_util_isFunction__WEBPACK_IMPORTED_MODULE_0__.isFunction)(options)) {
+        resultSelector = options;
+        options = undefined;
+    }
+    if (resultSelector) {
+        return fromEvent(target, eventName, options).pipe((0,_util_mapOneOrManyArgs__WEBPACK_IMPORTED_MODULE_1__.mapOneOrManyArgs)(resultSelector));
+    }
+    var _a = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__read)(isEventTarget(target)
+        ? eventTargetMethods.map(function (methodName) { return function (handler) { return target[methodName](eventName, handler, options); }; })
+        :
+            isNodeStyleEventEmitter(target)
+                ? nodeEventEmitterMethods.map(toCommonHandlerRegistry(target, eventName))
+                : isJQueryStyleEventEmitter(target)
+                    ? jqueryMethods.map(toCommonHandlerRegistry(target, eventName))
+                    : [], 2), add = _a[0], remove = _a[1];
+    if (!add) {
+        if ((0,_util_isArrayLike__WEBPACK_IMPORTED_MODULE_3__.isArrayLike)(target)) {
+            return (0,_operators_mergeMap__WEBPACK_IMPORTED_MODULE_4__.mergeMap)(function (subTarget) { return fromEvent(subTarget, eventName, options); })((0,_observable_innerFrom__WEBPACK_IMPORTED_MODULE_5__.innerFrom)(target));
+        }
+    }
+    if (!add) {
+        throw new TypeError('Invalid event target');
+    }
+    return new _Observable__WEBPACK_IMPORTED_MODULE_6__.Observable(function (subscriber) {
+        var handler = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            return subscriber.next(1 < args.length ? args : args[0]);
+        };
+        add(handler);
+        return function () { return remove(handler); };
+    });
+}
+function toCommonHandlerRegistry(target, eventName) {
+    return function (methodName) { return function (handler) { return target[methodName](eventName, handler); }; };
+}
+function isNodeStyleEventEmitter(target) {
+    return (0,_util_isFunction__WEBPACK_IMPORTED_MODULE_0__.isFunction)(target.addListener) && (0,_util_isFunction__WEBPACK_IMPORTED_MODULE_0__.isFunction)(target.removeListener);
+}
+function isJQueryStyleEventEmitter(target) {
+    return (0,_util_isFunction__WEBPACK_IMPORTED_MODULE_0__.isFunction)(target.on) && (0,_util_isFunction__WEBPACK_IMPORTED_MODULE_0__.isFunction)(target.off);
+}
+function isEventTarget(target) {
+    return (0,_util_isFunction__WEBPACK_IMPORTED_MODULE_0__.isFunction)(target.addEventListener) && (0,_util_isFunction__WEBPACK_IMPORTED_MODULE_0__.isFunction)(target.removeEventListener);
+}
+//# sourceMappingURL=fromEvent.js.map
+
+/***/ }),
+/* 86 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "interval": () => (/* binding */ interval)
+/* harmony export */ });
+/* harmony import */ var _scheduler_async__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(73);
+/* harmony import */ var _timer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(87);
+
+
+function interval(period, scheduler) {
+    if (period === void 0) { period = 0; }
+    if (scheduler === void 0) { scheduler = _scheduler_async__WEBPACK_IMPORTED_MODULE_0__.asyncScheduler; }
+    if (period < 0) {
+        period = 0;
+    }
+    return (0,_timer__WEBPACK_IMPORTED_MODULE_1__.timer)(period, period, scheduler);
+}
+//# sourceMappingURL=interval.js.map
+
+/***/ }),
+/* 87 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "timer": () => (/* binding */ timer)
+/* harmony export */ });
+/* harmony import */ var _Observable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _scheduler_async__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(73);
+/* harmony import */ var _util_isScheduler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23);
+/* harmony import */ var _util_isDate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(88);
+
+
+
+
+function timer(dueTime, intervalOrScheduler, scheduler) {
+    if (dueTime === void 0) { dueTime = 0; }
+    if (scheduler === void 0) { scheduler = _scheduler_async__WEBPACK_IMPORTED_MODULE_0__.async; }
+    var intervalDuration = -1;
+    if (intervalOrScheduler != null) {
+        if ((0,_util_isScheduler__WEBPACK_IMPORTED_MODULE_1__.isScheduler)(intervalOrScheduler)) {
+            scheduler = intervalOrScheduler;
+        }
+        else {
+            intervalDuration = intervalOrScheduler;
+        }
+    }
+    return new _Observable__WEBPACK_IMPORTED_MODULE_2__.Observable(function (subscriber) {
+        var due = (0,_util_isDate__WEBPACK_IMPORTED_MODULE_3__.isValidDate)(dueTime) ? +dueTime - scheduler.now() : dueTime;
+        if (due < 0) {
+            due = 0;
+        }
+        var n = 0;
+        return scheduler.schedule(function () {
+            if (!subscriber.closed) {
+                subscriber.next(n++);
+                if (0 <= intervalDuration) {
+                    this.schedule(undefined, intervalDuration);
+                }
+                else {
+                    subscriber.complete();
+                }
+            }
+        }, due);
+    });
+}
+//# sourceMappingURL=timer.js.map
+
+/***/ }),
+/* 88 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isValidDate": () => (/* binding */ isValidDate)
+/* harmony export */ });
+function isValidDate(value) {
+    return value instanceof Date && !isNaN(value);
+}
+//# sourceMappingURL=isDate.js.map
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -3736,7 +3946,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._bindNodeCallback)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._defer)();
 
 })();
 

@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _bindNodeCallback } from './operators';
+import { _defer } from './operators';
 
-_bindNodeCallback();
+_defer();
