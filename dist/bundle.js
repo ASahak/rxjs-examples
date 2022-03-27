@@ -14,7 +14,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_combineLatestWith": () => (/* reexport safe */ _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__["default"]),
 /* harmony export */   "_defer": () => (/* reexport safe */ _defer__WEBPACK_IMPORTED_MODULE_5__["default"]),
 /* harmony export */   "_empty": () => (/* reexport safe */ _empty__WEBPACK_IMPORTED_MODULE_6__["default"]),
-/* harmony export */   "_from": () => (/* reexport safe */ _from__WEBPACK_IMPORTED_MODULE_7__["default"])
+/* harmony export */   "_from": () => (/* reexport safe */ _from__WEBPACK_IMPORTED_MODULE_7__["default"]),
+/* harmony export */   "_fromEvent": () => (/* reexport safe */ _fromEvent__WEBPACK_IMPORTED_MODULE_8__["default"])
 /* harmony export */ });
 /* harmony import */ var _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(53);
@@ -24,6 +25,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _defer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(83);
 /* harmony import */ var _empty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(89);
 /* harmony import */ var _from__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(95);
+/* harmony import */ var _fromEvent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(97);
+
 
 
 
@@ -4100,6 +4103,25 @@ function take(count) {
 }
 //# sourceMappingURL=take.js.map
 
+/***/ }),
+/* 97 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(85);
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const result = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.fromEvent)(document, 'click')
+
+    result.subscribe(console.log)
+});
+
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -4178,7 +4200,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._from)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._fromEvent)();
 
 })();
 
