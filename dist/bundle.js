@@ -2143,11 +2143,14 @@ function of() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "_ajax": () => (/* reexport safe */ _ajax__WEBPACK_IMPORTED_MODULE_2__["default"]),
 /* harmony export */   "_combineLatestAll": () => (/* reexport safe */ _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__["default"]),
 /* harmony export */   "_combineLatestWith": () => (/* reexport safe */ _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(53);
+/* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(61);
+
 
 
 
@@ -2397,6 +2400,456 @@ function mergeInternals(source, subscriber, project, concurrent, onBeforeNext, e
     };
 }
 //# sourceMappingURL=mergeInternals.js.map
+
+/***/ }),
+/* 61 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs_ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(62);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(24);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(66);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(51);
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+
+    const url = 'some_endpoint';
+
+    const result = (0,rxjs_ajax__WEBPACK_IMPORTED_MODULE_0__.ajax)({
+        url,
+        method: 'GET',
+        headers: {
+            /*some headers*/
+        },
+        body: {
+            /*in case you need a body*/
+        }
+    });
+
+    result.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)(response => console.log(response)),
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(error => {
+            console.log('error: ', error);
+            return (0,rxjs__WEBPACK_IMPORTED_MODULE_3__.of)(error);
+        })
+    )
+});
+
+
+/***/ }),
+/* 62 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ajax": () => (/* binding */ ajax),
+/* harmony export */   "fromAjax": () => (/* binding */ fromAjax)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony import */ var _operators_map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
+/* harmony import */ var _Observable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _AjaxResponse__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(65);
+/* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(63);
+
+
+
+
+
+function ajaxGet(url, headers) {
+    return ajax({ method: 'GET', url: url, headers: headers });
+}
+function ajaxPost(url, body, headers) {
+    return ajax({ method: 'POST', url: url, body: body, headers: headers });
+}
+function ajaxDelete(url, headers) {
+    return ajax({ method: 'DELETE', url: url, headers: headers });
+}
+function ajaxPut(url, body, headers) {
+    return ajax({ method: 'PUT', url: url, body: body, headers: headers });
+}
+function ajaxPatch(url, body, headers) {
+    return ajax({ method: 'PATCH', url: url, body: body, headers: headers });
+}
+var mapResponse = (0,_operators_map__WEBPACK_IMPORTED_MODULE_0__.map)(function (x) { return x.response; });
+function ajaxGetJSON(url, headers) {
+    return mapResponse(ajax({
+        method: 'GET',
+        url: url,
+        headers: headers,
+    }));
+}
+var ajax = (function () {
+    var create = function (urlOrConfig) {
+        var config = typeof urlOrConfig === 'string'
+            ? {
+                url: urlOrConfig,
+            }
+            : urlOrConfig;
+        return fromAjax(config);
+    };
+    create.get = ajaxGet;
+    create.post = ajaxPost;
+    create.delete = ajaxDelete;
+    create.put = ajaxPut;
+    create.patch = ajaxPatch;
+    create.getJSON = ajaxGetJSON;
+    return create;
+})();
+var UPLOAD = 'upload';
+var DOWNLOAD = 'download';
+var LOADSTART = 'loadstart';
+var PROGRESS = 'progress';
+var LOAD = 'load';
+function fromAjax(init) {
+    return new _Observable__WEBPACK_IMPORTED_MODULE_1__.Observable(function (destination) {
+        var _a, _b;
+        var config = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({ async: true, crossDomain: false, withCredentials: false, method: 'GET', timeout: 0, responseType: 'json' }, init);
+        var queryParams = config.queryParams, configuredBody = config.body, configuredHeaders = config.headers;
+        var url = config.url;
+        if (!url) {
+            throw new TypeError('url is required');
+        }
+        if (queryParams) {
+            var searchParams_1;
+            if (url.includes('?')) {
+                var parts = url.split('?');
+                if (2 < parts.length) {
+                    throw new TypeError('invalid url');
+                }
+                searchParams_1 = new URLSearchParams(parts[1]);
+                new URLSearchParams(queryParams).forEach(function (value, key) { return searchParams_1.set(key, value); });
+                url = parts[0] + '?' + searchParams_1;
+            }
+            else {
+                searchParams_1 = new URLSearchParams(queryParams);
+                url = url + '?' + searchParams_1;
+            }
+        }
+        var headers = {};
+        if (configuredHeaders) {
+            for (var key in configuredHeaders) {
+                if (configuredHeaders.hasOwnProperty(key)) {
+                    headers[key.toLowerCase()] = configuredHeaders[key];
+                }
+            }
+        }
+        var crossDomain = config.crossDomain;
+        if (!crossDomain && !('x-requested-with' in headers)) {
+            headers['x-requested-with'] = 'XMLHttpRequest';
+        }
+        var withCredentials = config.withCredentials, xsrfCookieName = config.xsrfCookieName, xsrfHeaderName = config.xsrfHeaderName;
+        if ((withCredentials || !crossDomain) && xsrfCookieName && xsrfHeaderName) {
+            var xsrfCookie = (_b = (_a = document === null || document === void 0 ? void 0 : document.cookie.match(new RegExp("(^|;\\s*)(" + xsrfCookieName + ")=([^;]*)"))) === null || _a === void 0 ? void 0 : _a.pop()) !== null && _b !== void 0 ? _b : '';
+            if (xsrfCookie) {
+                headers[xsrfHeaderName] = xsrfCookie;
+            }
+        }
+        var body = extractContentTypeAndMaybeSerializeBody(configuredBody, headers);
+        var _request = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, config), { url: url,
+            headers: headers,
+            body: body });
+        var xhr;
+        xhr = init.createXHR ? init.createXHR() : new XMLHttpRequest();
+        {
+            var progressSubscriber_1 = init.progressSubscriber, _c = init.includeDownloadProgress, includeDownloadProgress = _c === void 0 ? false : _c, _d = init.includeUploadProgress, includeUploadProgress = _d === void 0 ? false : _d;
+            var addErrorEvent = function (type, errorFactory) {
+                xhr.addEventListener(type, function () {
+                    var _a;
+                    var error = errorFactory();
+                    (_a = progressSubscriber_1 === null || progressSubscriber_1 === void 0 ? void 0 : progressSubscriber_1.error) === null || _a === void 0 ? void 0 : _a.call(progressSubscriber_1, error);
+                    destination.error(error);
+                });
+            };
+            addErrorEvent('timeout', function () { return new _errors__WEBPACK_IMPORTED_MODULE_3__.AjaxTimeoutError(xhr, _request); });
+            addErrorEvent('abort', function () { return new _errors__WEBPACK_IMPORTED_MODULE_3__.AjaxError('aborted', xhr, _request); });
+            var createResponse_1 = function (direction, event) {
+                return new _AjaxResponse__WEBPACK_IMPORTED_MODULE_4__.AjaxResponse(event, xhr, _request, direction + "_" + event.type);
+            };
+            var addProgressEvent_1 = function (target, type, direction) {
+                target.addEventListener(type, function (event) {
+                    destination.next(createResponse_1(direction, event));
+                });
+            };
+            if (includeUploadProgress) {
+                [LOADSTART, PROGRESS, LOAD].forEach(function (type) { return addProgressEvent_1(xhr.upload, type, UPLOAD); });
+            }
+            if (progressSubscriber_1) {
+                [LOADSTART, PROGRESS].forEach(function (type) { return xhr.upload.addEventListener(type, function (e) { var _a; return (_a = progressSubscriber_1 === null || progressSubscriber_1 === void 0 ? void 0 : progressSubscriber_1.next) === null || _a === void 0 ? void 0 : _a.call(progressSubscriber_1, e); }); });
+            }
+            if (includeDownloadProgress) {
+                [LOADSTART, PROGRESS].forEach(function (type) { return addProgressEvent_1(xhr, type, DOWNLOAD); });
+            }
+            var emitError_1 = function (status) {
+                var msg = 'ajax error' + (status ? ' ' + status : '');
+                destination.error(new _errors__WEBPACK_IMPORTED_MODULE_3__.AjaxError(msg, xhr, _request));
+            };
+            xhr.addEventListener('error', function (e) {
+                var _a;
+                (_a = progressSubscriber_1 === null || progressSubscriber_1 === void 0 ? void 0 : progressSubscriber_1.error) === null || _a === void 0 ? void 0 : _a.call(progressSubscriber_1, e);
+                emitError_1();
+            });
+            xhr.addEventListener(LOAD, function (event) {
+                var _a, _b;
+                var status = xhr.status;
+                if (status < 400) {
+                    (_a = progressSubscriber_1 === null || progressSubscriber_1 === void 0 ? void 0 : progressSubscriber_1.complete) === null || _a === void 0 ? void 0 : _a.call(progressSubscriber_1);
+                    var response = void 0;
+                    try {
+                        response = createResponse_1(DOWNLOAD, event);
+                    }
+                    catch (err) {
+                        destination.error(err);
+                        return;
+                    }
+                    destination.next(response);
+                    destination.complete();
+                }
+                else {
+                    (_b = progressSubscriber_1 === null || progressSubscriber_1 === void 0 ? void 0 : progressSubscriber_1.error) === null || _b === void 0 ? void 0 : _b.call(progressSubscriber_1, event);
+                    emitError_1(status);
+                }
+            });
+        }
+        var user = _request.user, method = _request.method, async = _request.async;
+        if (user) {
+            xhr.open(method, url, async, user, _request.password);
+        }
+        else {
+            xhr.open(method, url, async);
+        }
+        if (async) {
+            xhr.timeout = _request.timeout;
+            xhr.responseType = _request.responseType;
+        }
+        if ('withCredentials' in xhr) {
+            xhr.withCredentials = _request.withCredentials;
+        }
+        for (var key in headers) {
+            if (headers.hasOwnProperty(key)) {
+                xhr.setRequestHeader(key, headers[key]);
+            }
+        }
+        if (body) {
+            xhr.send(body);
+        }
+        else {
+            xhr.send();
+        }
+        return function () {
+            if (xhr && xhr.readyState !== 4) {
+                xhr.abort();
+            }
+        };
+    });
+}
+function extractContentTypeAndMaybeSerializeBody(body, headers) {
+    var _a;
+    if (!body ||
+        typeof body === 'string' ||
+        isFormData(body) ||
+        isURLSearchParams(body) ||
+        isArrayBuffer(body) ||
+        isFile(body) ||
+        isBlob(body) ||
+        isReadableStream(body)) {
+        return body;
+    }
+    if (isArrayBufferView(body)) {
+        return body.buffer;
+    }
+    if (typeof body === 'object') {
+        headers['content-type'] = (_a = headers['content-type']) !== null && _a !== void 0 ? _a : 'application/json;charset=utf-8';
+        return JSON.stringify(body);
+    }
+    throw new TypeError('Unknown body type');
+}
+var _toString = Object.prototype.toString;
+function toStringCheck(obj, name) {
+    return _toString.call(obj) === "[object " + name + "]";
+}
+function isArrayBuffer(body) {
+    return toStringCheck(body, 'ArrayBuffer');
+}
+function isFile(body) {
+    return toStringCheck(body, 'File');
+}
+function isBlob(body) {
+    return toStringCheck(body, 'Blob');
+}
+function isArrayBufferView(body) {
+    return typeof ArrayBuffer !== 'undefined' && ArrayBuffer.isView(body);
+}
+function isFormData(body) {
+    return typeof FormData !== 'undefined' && body instanceof FormData;
+}
+function isURLSearchParams(body) {
+    return typeof URLSearchParams !== 'undefined' && body instanceof URLSearchParams;
+}
+function isReadableStream(body) {
+    return typeof ReadableStream !== 'undefined' && body instanceof ReadableStream;
+}
+//# sourceMappingURL=ajax.js.map
+
+/***/ }),
+/* 63 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AjaxError": () => (/* binding */ AjaxError),
+/* harmony export */   "AjaxTimeoutError": () => (/* binding */ AjaxTimeoutError)
+/* harmony export */ });
+/* harmony import */ var _getXHRResponse__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(64);
+/* harmony import */ var _util_createErrorClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+
+
+var AjaxError = (0,_util_createErrorClass__WEBPACK_IMPORTED_MODULE_0__.createErrorClass)(function (_super) {
+    return function AjaxErrorImpl(message, xhr, request) {
+        this.message = message;
+        this.name = 'AjaxError';
+        this.xhr = xhr;
+        this.request = request;
+        this.status = xhr.status;
+        this.responseType = xhr.responseType;
+        var response;
+        try {
+            response = (0,_getXHRResponse__WEBPACK_IMPORTED_MODULE_1__.getXHRResponse)(xhr);
+        }
+        catch (err) {
+            response = xhr.responseText;
+        }
+        this.response = response;
+    };
+});
+var AjaxTimeoutError = (function () {
+    function AjaxTimeoutErrorImpl(xhr, request) {
+        AjaxError.call(this, 'ajax timeout', xhr, request);
+        this.name = 'AjaxTimeoutError';
+        return this;
+    }
+    AjaxTimeoutErrorImpl.prototype = Object.create(AjaxError.prototype);
+    return AjaxTimeoutErrorImpl;
+})();
+//# sourceMappingURL=errors.js.map
+
+/***/ }),
+/* 64 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getXHRResponse": () => (/* binding */ getXHRResponse)
+/* harmony export */ });
+function getXHRResponse(xhr) {
+    switch (xhr.responseType) {
+        case 'json': {
+            if ('response' in xhr) {
+                return xhr.response;
+            }
+            else {
+                var ieXHR = xhr;
+                return JSON.parse(ieXHR.responseText);
+            }
+        }
+        case 'document':
+            return xhr.responseXML;
+        case 'text':
+        default: {
+            if ('response' in xhr) {
+                return xhr.response;
+            }
+            else {
+                var ieXHR = xhr;
+                return ieXHR.responseText;
+            }
+        }
+    }
+}
+//# sourceMappingURL=getXHRResponse.js.map
+
+/***/ }),
+/* 65 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AjaxResponse": () => (/* binding */ AjaxResponse)
+/* harmony export */ });
+/* harmony import */ var _getXHRResponse__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(64);
+
+var AjaxResponse = (function () {
+    function AjaxResponse(originalEvent, xhr, request, type) {
+        if (type === void 0) { type = 'download_load'; }
+        this.originalEvent = originalEvent;
+        this.xhr = xhr;
+        this.request = request;
+        this.type = type;
+        var status = xhr.status, responseType = xhr.responseType;
+        this.status = status !== null && status !== void 0 ? status : 0;
+        this.responseType = responseType !== null && responseType !== void 0 ? responseType : '';
+        var allHeaders = xhr.getAllResponseHeaders();
+        this.responseHeaders = allHeaders
+            ?
+                allHeaders.split('\n').reduce(function (headers, line) {
+                    var index = line.indexOf(': ');
+                    headers[line.slice(0, index)] = line.slice(index + 2);
+                    return headers;
+                }, {})
+            : {};
+        this.response = (0,_getXHRResponse__WEBPACK_IMPORTED_MODULE_0__.getXHRResponse)(xhr);
+        var loaded = originalEvent.loaded, total = originalEvent.total;
+        this.loaded = loaded;
+        this.total = total;
+    }
+    return AjaxResponse;
+}());
+
+//# sourceMappingURL=AjaxResponse.js.map
+
+/***/ }),
+/* 66 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "catchError": () => (/* binding */ catchError)
+/* harmony export */ });
+/* harmony import */ var _observable_innerFrom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(33);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26);
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(25);
+
+
+
+function catchError(selector) {
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        var innerSub = null;
+        var syncUnsub = false;
+        var handledResult;
+        innerSub = source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(subscriber, undefined, undefined, function (err) {
+            handledResult = (0,_observable_innerFrom__WEBPACK_IMPORTED_MODULE_2__.innerFrom)(selector(err, catchError(selector)(source)));
+            if (innerSub) {
+                innerSub.unsubscribe();
+                innerSub = null;
+                handledResult.subscribe(subscriber);
+            }
+            else {
+                syncUnsub = true;
+            }
+        }));
+        if (syncUnsub) {
+            innerSub.unsubscribe();
+            innerSub = null;
+            handledResult.subscribe(subscriber);
+        }
+    });
+}
+//# sourceMappingURL=catchError.js.map
 
 /***/ })
 /******/ 	]);
