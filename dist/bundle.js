@@ -13,7 +13,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_combineLatestAll": () => (/* reexport safe */ _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__["default"]),
 /* harmony export */   "_combineLatestWith": () => (/* reexport safe */ _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__["default"]),
 /* harmony export */   "_defer": () => (/* reexport safe */ _defer__WEBPACK_IMPORTED_MODULE_5__["default"]),
-/* harmony export */   "_empty": () => (/* reexport safe */ _empty__WEBPACK_IMPORTED_MODULE_6__["default"])
+/* harmony export */   "_empty": () => (/* reexport safe */ _empty__WEBPACK_IMPORTED_MODULE_6__["default"]),
+/* harmony export */   "_from": () => (/* reexport safe */ _from__WEBPACK_IMPORTED_MODULE_7__["default"])
 /* harmony export */ });
 /* harmony import */ var _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(53);
@@ -22,6 +23,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bindNodeCallback__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(80);
 /* harmony import */ var _defer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(83);
 /* harmony import */ var _empty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(89);
+/* harmony import */ var _from__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(95);
+
 
 
 
@@ -4012,6 +4015,91 @@ function mergeAll(concurrent) {
 }
 //# sourceMappingURL=mergeAll.js.map
 
+/***/ }),
+/* 95 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(96);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const result1 = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.from)([1, 2, 3]);
+
+    result1.subscribe(console.log)
+    // Logs:
+    // 10
+    // 20
+    // 30
+
+
+    // EXAMPLE 2
+
+    function * generateDoubles(seed) {
+        let i = seed;
+        while (true) {
+            yield i;
+            i *= 2;
+        }
+    }
+
+    const iterator = generateDoubles(3);
+
+    const result2 = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.from)(iterator).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.take)(10));
+    result2.subscribe(console.log)
+    // Logs:
+    // 3
+    // 6
+    // 12
+    // 24
+    // 48
+    // 96
+    // 192
+    // 384
+    // 768
+    // 1536
+});
+
+
+/***/ }),
+/* 96 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "take": () => (/* binding */ take)
+/* harmony export */ });
+/* harmony import */ var _observable_empty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(90);
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
+
+
+
+function take(count) {
+    return count <= 0
+        ?
+            function () { return _observable_empty__WEBPACK_IMPORTED_MODULE_0__.EMPTY; }
+        : (0,_util_lift__WEBPACK_IMPORTED_MODULE_1__.operate)(function (source, subscriber) {
+            var seen = 0;
+            source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__.createOperatorSubscriber)(subscriber, function (value) {
+                if (++seen <= count) {
+                    subscriber.next(value);
+                    if (count <= seen) {
+                        subscriber.complete();
+                    }
+                }
+            }));
+        });
+}
+//# sourceMappingURL=take.js.map
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -4090,7 +4178,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._empty)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._from)();
 
 })();
 
