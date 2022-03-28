@@ -12,3 +12,4 @@ export { default as _generate } from './generate';
 export { default as _interval } from './interval';
 export { default as _of } from './of';
 export { default as _range } from './range';
+export { default as _throwError } from './throwError';

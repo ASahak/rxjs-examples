@@ -20,7 +20,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_generate": () => (/* reexport safe */ _generate__WEBPACK_IMPORTED_MODULE_10__["default"]),
 /* harmony export */   "_interval": () => (/* reexport safe */ _interval__WEBPACK_IMPORTED_MODULE_11__["default"]),
 /* harmony export */   "_of": () => (/* reexport safe */ _of__WEBPACK_IMPORTED_MODULE_12__["default"]),
-/* harmony export */   "_range": () => (/* reexport safe */ _range__WEBPACK_IMPORTED_MODULE_13__["default"])
+/* harmony export */   "_range": () => (/* reexport safe */ _range__WEBPACK_IMPORTED_MODULE_13__["default"]),
+/* harmony export */   "_throwError": () => (/* reexport safe */ _throwError__WEBPACK_IMPORTED_MODULE_14__["default"])
 /* harmony export */ });
 /* harmony import */ var _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(53);
@@ -36,6 +37,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _interval__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(102);
 /* harmony import */ var _of__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(103);
 /* harmony import */ var _range__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(104);
+/* harmony import */ var _throwError__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(106);
+
 
 
 
@@ -4404,6 +4407,56 @@ function range(start, count, scheduler) {
 }
 //# sourceMappingURL=range.js.map
 
+/***/ }),
+/* 106 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(107);
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    let errorCount = 0;
+    const errorTimestamp$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.throwError)(() => {
+        const error = new Error(`This is error number ${++errorCount}`)
+        error.timestamp = Date.now();
+        return error
+    })
+
+    errorTimestamp$.subscribe({
+        error: err => console.log(err.timestamp, err.message)
+    })
+
+    errorTimestamp$.subscribe({
+        error: err => console.log(err.timestamp, err.message)
+    })
+});
+
+
+/***/ }),
+/* 107 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "throwError": () => (/* binding */ throwError)
+/* harmony export */ });
+/* harmony import */ var _Observable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _util_isFunction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
+
+
+function throwError(errorOrErrorFactory, scheduler) {
+    var errorFactory = (0,_util_isFunction__WEBPACK_IMPORTED_MODULE_0__.isFunction)(errorOrErrorFactory) ? errorOrErrorFactory : function () { return errorOrErrorFactory; };
+    var init = function (subscriber) { return subscriber.error(errorFactory()); };
+    return new _Observable__WEBPACK_IMPORTED_MODULE_1__.Observable(scheduler ? function (subscriber) { return scheduler.schedule(init, 0, subscriber); } : init);
+}
+//# sourceMappingURL=throwError.js.map
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -4482,7 +4535,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._range)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._throwError)();
 
 })();
 

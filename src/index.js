@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _range } from './operators';
+import { _throwError } from './operators';
 
-_range();
+_throwError();
