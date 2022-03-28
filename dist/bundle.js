@@ -16,7 +16,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_empty": () => (/* reexport safe */ _empty__WEBPACK_IMPORTED_MODULE_6__["default"]),
 /* harmony export */   "_from": () => (/* reexport safe */ _from__WEBPACK_IMPORTED_MODULE_7__["default"]),
 /* harmony export */   "_fromEvent": () => (/* reexport safe */ _fromEvent__WEBPACK_IMPORTED_MODULE_8__["default"]),
-/* harmony export */   "_fromEventPattern": () => (/* reexport safe */ _fromEventPattern__WEBPACK_IMPORTED_MODULE_9__["default"])
+/* harmony export */   "_fromEventPattern": () => (/* reexport safe */ _fromEventPattern__WEBPACK_IMPORTED_MODULE_9__["default"]),
+/* harmony export */   "_generate": () => (/* reexport safe */ _generate__WEBPACK_IMPORTED_MODULE_10__["default"])
 /* harmony export */ });
 /* harmony import */ var _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(53);
@@ -28,6 +29,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _from__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(95);
 /* harmony import */ var _fromEvent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(97);
 /* harmony import */ var _fromEventPattern__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(98);
+/* harmony import */ var _generate__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(100);
+
 
 
 
@@ -4188,6 +4191,89 @@ function fromEventPattern(addHandler, removeHandler, resultSelector) {
 }
 //# sourceMappingURL=fromEventPattern.js.map
 
+/***/ }),
+/* 100 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(101);
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const result = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.generate)(0, x => x < 3, x => x + 1, x => x);
+
+    result.subscribe(console.log)
+});
+
+
+/***/ }),
+/* 101 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "generate": () => (/* binding */ generate)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
+/* harmony import */ var _util_identity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(19);
+/* harmony import */ var _util_isScheduler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23);
+/* harmony import */ var _defer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(84);
+/* harmony import */ var _scheduled_scheduleIterable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(48);
+
+
+
+
+
+function generate(initialStateOrOptions, condition, iterate, resultSelectorOrScheduler, scheduler) {
+    var _a, _b;
+    var resultSelector;
+    var initialState;
+    if (arguments.length === 1) {
+        (_a = initialStateOrOptions, initialState = _a.initialState, condition = _a.condition, iterate = _a.iterate, _b = _a.resultSelector, resultSelector = _b === void 0 ? _util_identity__WEBPACK_IMPORTED_MODULE_0__.identity : _b, scheduler = _a.scheduler);
+    }
+    else {
+        initialState = initialStateOrOptions;
+        if (!resultSelectorOrScheduler || (0,_util_isScheduler__WEBPACK_IMPORTED_MODULE_1__.isScheduler)(resultSelectorOrScheduler)) {
+            resultSelector = _util_identity__WEBPACK_IMPORTED_MODULE_0__.identity;
+            scheduler = resultSelectorOrScheduler;
+        }
+        else {
+            resultSelector = resultSelectorOrScheduler;
+        }
+    }
+    function gen() {
+        var state;
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    state = initialState;
+                    _a.label = 1;
+                case 1:
+                    if (!(!condition || condition(state))) return [3, 4];
+                    return [4, resultSelector(state)];
+                case 2:
+                    _a.sent();
+                    _a.label = 3;
+                case 3:
+                    state = iterate(state);
+                    return [3, 1];
+                case 4: return [2];
+            }
+        });
+    }
+    return (0,_defer__WEBPACK_IMPORTED_MODULE_3__.defer)((scheduler
+        ?
+            function () { return (0,_scheduled_scheduleIterable__WEBPACK_IMPORTED_MODULE_4__.scheduleIterable)(gen(), scheduler); }
+        :
+            gen));
+}
+//# sourceMappingURL=generate.js.map
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -4266,7 +4352,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._fromEventPattern)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._generate)();
 
 })();
 
