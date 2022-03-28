@@ -17,7 +17,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_from": () => (/* reexport safe */ _from__WEBPACK_IMPORTED_MODULE_7__["default"]),
 /* harmony export */   "_fromEvent": () => (/* reexport safe */ _fromEvent__WEBPACK_IMPORTED_MODULE_8__["default"]),
 /* harmony export */   "_fromEventPattern": () => (/* reexport safe */ _fromEventPattern__WEBPACK_IMPORTED_MODULE_9__["default"]),
-/* harmony export */   "_generate": () => (/* reexport safe */ _generate__WEBPACK_IMPORTED_MODULE_10__["default"])
+/* harmony export */   "_generate": () => (/* reexport safe */ _generate__WEBPACK_IMPORTED_MODULE_10__["default"]),
+/* harmony export */   "_interval": () => (/* reexport safe */ _interval__WEBPACK_IMPORTED_MODULE_11__["default"])
 /* harmony export */ });
 /* harmony import */ var _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(53);
@@ -30,6 +31,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fromEvent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(97);
 /* harmony import */ var _fromEventPattern__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(98);
 /* harmony import */ var _generate__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(100);
+/* harmony import */ var _interval__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(102);
+
 
 
 
@@ -4274,6 +4277,27 @@ function generate(initialStateOrOptions, condition, iterate, resultSelectorOrSch
 }
 //# sourceMappingURL=generate.js.map
 
+/***/ }),
+/* 102 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(96);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const timer$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.interval)(1000);
+
+    timer$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.take)(4)).subscribe(console.log)
+});
+
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -4352,7 +4376,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._generate)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._interval)();
 
 })();
 

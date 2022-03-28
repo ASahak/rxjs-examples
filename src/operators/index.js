@@ -9,3 +9,4 @@ export { default as _from } from './from';
 export { default as _fromEvent } from './fromEvent';
 export { default as _fromEventPattern } from './fromEventPattern';
 export { default as _generate } from './generate';
+export { default as _interval } from './interval';

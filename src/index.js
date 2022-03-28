@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _generate } from './operators';
+import { _interval } from './operators';
 
-_generate();
+_interval();
