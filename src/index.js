@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _of } from './operators';
+import { _range } from './operators';
 
-_of();
+_range();

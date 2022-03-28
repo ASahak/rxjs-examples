@@ -11,3 +11,4 @@ export { default as _fromEventPattern } from './fromEventPattern';
 export { default as _generate } from './generate';
 export { default as _interval } from './interval';
 export { default as _of } from './of';
+export { default as _range } from './range';
