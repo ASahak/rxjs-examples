@@ -18,7 +18,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_fromEvent": () => (/* reexport safe */ _fromEvent__WEBPACK_IMPORTED_MODULE_8__["default"]),
 /* harmony export */   "_fromEventPattern": () => (/* reexport safe */ _fromEventPattern__WEBPACK_IMPORTED_MODULE_9__["default"]),
 /* harmony export */   "_generate": () => (/* reexport safe */ _generate__WEBPACK_IMPORTED_MODULE_10__["default"]),
-/* harmony export */   "_interval": () => (/* reexport safe */ _interval__WEBPACK_IMPORTED_MODULE_11__["default"])
+/* harmony export */   "_interval": () => (/* reexport safe */ _interval__WEBPACK_IMPORTED_MODULE_11__["default"]),
+/* harmony export */   "_of": () => (/* reexport safe */ _of__WEBPACK_IMPORTED_MODULE_12__["default"])
 /* harmony export */ });
 /* harmony import */ var _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(53);
@@ -32,6 +33,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fromEventPattern__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(98);
 /* harmony import */ var _generate__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(100);
 /* harmony import */ var _interval__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(102);
+/* harmony import */ var _of__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(103);
+
 
 
 
@@ -4298,6 +4301,36 @@ __webpack_require__.r(__webpack_exports__);
 });
 
 
+/***/ }),
+/* 103 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(52);
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    const result1$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.of)([10, 20, 30]);
+
+    result1$.subscribe(console.log);
+
+    // EXAMPLE 2
+    const result2$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.of)('Hello');
+
+    result2$.subscribe(console.log);
+
+    // EXAMPLE 3
+    const result3$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.of)('Hello', 10, 20);
+
+    result3$.subscribe(console.log);
+});
+
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -4376,7 +4409,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._interval)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._of)();
 
 })();
 
