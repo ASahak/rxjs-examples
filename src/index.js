@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _timer } from './operators';
+import { _iif } from './operators';
 
-_timer();
+_iif();
