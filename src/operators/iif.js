@@ -11,7 +11,11 @@ export default () => {
 
     status = true;
     checkTrueOrFalse.subscribe(console.log);
+    // Logs:
+    // True callback!
 
     status = false;
     checkTrueOrFalse.subscribe(console.log);
+    // Logs:
+    // False callback!
 }

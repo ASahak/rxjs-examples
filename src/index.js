@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _forkJoin } from './operators';
+import { _merge } from './operators';
 
-_forkJoin();
+_merge();

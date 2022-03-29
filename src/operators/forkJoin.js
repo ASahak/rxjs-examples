@@ -10,4 +10,7 @@ export default () => {
         next: v => console.log(v),
         complete: () => console.log('Complete!')
     })
+    // Logs:
+    // { ofObs: 4, promiseObs: 1, timerObs: 0 }
+    // Complete!
 }

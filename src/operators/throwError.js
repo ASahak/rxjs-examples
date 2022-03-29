@@ -11,8 +11,12 @@ export default () => {
     errorTimestamp$.subscribe({
         error: err => console.log(err.timestamp, err.message)
     })
+    // Logs:
+    // Date 'This is error number 1'
 
     errorTimestamp$.subscribe({
         error: err => console.log(err.timestamp, err.message)
     })
+    // Logs:
+    // Date 'This is error number 2'
 }

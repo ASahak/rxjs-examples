@@ -17,3 +17,4 @@ export { default as _timer } from './timer';
 export { default as _iif } from './iif';
 export { default as _concat } from './concat';
 export { default as _forkJoin } from './forkJoin';
+export { default as _merge } from './merge';

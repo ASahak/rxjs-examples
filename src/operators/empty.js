@@ -9,10 +9,16 @@ export default () => {
         mergeMap(x => x % 2 === 1 ? of('a', 'b', 'c') : empty()),
     );
     result1.subscribe(x => console.log(x));
+    // Logs:
+    // a
+    // b
+    // c
 
     // EXAMPLE 2
     const result2 = empty().pipe(startWith(7));
     result2.subscribe(x => console.log(x));
+    // Logs:
+    // 7
 }
 
 
