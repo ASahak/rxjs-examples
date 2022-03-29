@@ -13,3 +13,4 @@ export { default as _interval } from './interval';
 export { default as _of } from './of';
 export { default as _range } from './range';
 export { default as _throwError } from './throwError';
+export { default as _timer } from './timer';

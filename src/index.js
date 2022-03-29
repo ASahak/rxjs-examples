@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _throwError } from './operators';
+import { _timer } from './operators';
 
-_throwError();
+_timer();
