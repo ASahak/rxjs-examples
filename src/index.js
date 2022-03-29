@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _iif } from './operators';
+import { _concat } from './operators';
 
-_iif();
+_concat();
