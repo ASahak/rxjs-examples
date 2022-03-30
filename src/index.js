@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _race } from './operators';
+import { _zipWith } from './operators';
 
-_race();
+_zipWith();

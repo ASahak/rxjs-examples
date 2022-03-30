@@ -20,3 +20,4 @@ export { default as _forkJoin } from './forkJoin';
 export { default as _mergeWith } from './mergeWith';
 export { default as _partition } from './partition';
 export { default as _race } from './race';
+export { default as _zipWith } from './zipWith';
