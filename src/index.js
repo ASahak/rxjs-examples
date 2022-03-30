@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _partition } from './operators';
+import { _race } from './operators';
 
-_partition();
+_race();

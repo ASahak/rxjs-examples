@@ -19,3 +19,4 @@ export { default as _concat } from './concat';
 export { default as _forkJoin } from './forkJoin';
 export { default as _mergeWith } from './mergeWith';
 export { default as _partition } from './partition';
+export { default as _race } from './race';
