@@ -22,8 +22,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_generate": () => (/* reexport safe */ _generate__WEBPACK_IMPORTED_MODULE_10__["default"]),
 /* harmony export */   "_iif": () => (/* reexport safe */ _iif__WEBPACK_IMPORTED_MODULE_16__["default"]),
 /* harmony export */   "_interval": () => (/* reexport safe */ _interval__WEBPACK_IMPORTED_MODULE_11__["default"]),
-/* harmony export */   "_merge": () => (/* reexport safe */ _merge__WEBPACK_IMPORTED_MODULE_19__["default"]),
+/* harmony export */   "_mergeWith": () => (/* reexport safe */ _mergeWith__WEBPACK_IMPORTED_MODULE_19__["default"]),
 /* harmony export */   "_of": () => (/* reexport safe */ _of__WEBPACK_IMPORTED_MODULE_12__["default"]),
+/* harmony export */   "_partition": () => (/* reexport safe */ _partition__WEBPACK_IMPORTED_MODULE_20__["default"]),
 /* harmony export */   "_range": () => (/* reexport safe */ _range__WEBPACK_IMPORTED_MODULE_13__["default"]),
 /* harmony export */   "_throwError": () => (/* reexport safe */ _throwError__WEBPACK_IMPORTED_MODULE_14__["default"]),
 /* harmony export */   "_timer": () => (/* reexport safe */ _timer__WEBPACK_IMPORTED_MODULE_15__["default"])
@@ -44,10 +45,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _range__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(104);
 /* harmony import */ var _throwError__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(106);
 /* harmony import */ var _timer__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(108);
-/* harmony import */ var _iif__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(113);
-/* harmony import */ var _concat__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(115);
-/* harmony import */ var _forkJoin__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(116);
-/* harmony import */ var _merge__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(118);
+/* harmony import */ var _iif__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(109);
+/* harmony import */ var _concat__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(111);
+/* harmony import */ var _forkJoin__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(112);
+/* harmony import */ var _mergeWith__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(114);
+/* harmony import */ var _partition__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(117);
+
 
 
 
@@ -4528,11 +4531,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
-/* 109 */,
-/* 110 */,
-/* 111 */,
-/* 112 */,
-/* 113 */
+/* 109 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4540,7 +4539,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(114);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(110);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(52);
 
 
@@ -4566,7 +4565,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
-/* 114 */
+/* 110 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4582,7 +4581,7 @@ function iif(condition, trueResult, falseResult) {
 //# sourceMappingURL=iif.js.map
 
 /***/ }),
-/* 115 */
+/* 111 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4635,7 +4634,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
-/* 116 */
+/* 112 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4643,7 +4642,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(117);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(113);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(52);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(87);
 
@@ -4665,7 +4664,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
-/* 117 */
+/* 113 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4729,7 +4728,7 @@ function forkJoin() {
 //# sourceMappingURL=forkJoin.js.map
 
 /***/ }),
-/* 118 */
+/* 114 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4739,7 +4738,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(96);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(119);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(115);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(25);
 
 
@@ -4784,7 +4783,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
-/* 119 */
+/* 115 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4793,7 +4792,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "mergeWith": () => (/* binding */ mergeWith)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
-/* harmony import */ var _merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(120);
+/* harmony import */ var _merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(116);
 
 
 function mergeWith() {
@@ -4806,7 +4805,7 @@ function mergeWith() {
 //# sourceMappingURL=mergeWith.js.map
 
 /***/ }),
-/* 120 */
+/* 116 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4839,6 +4838,121 @@ function merge() {
     });
 }
 //# sourceMappingURL=merge.js.map
+
+/***/ }),
+/* 117 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(118);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(52);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(30);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(25);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(66);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(115);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    const [odd$, evens$] = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.partition)((0,rxjs__WEBPACK_IMPORTED_MODULE_1__.of)(1, 2, 3, 4, 5, 6), (v) => v % 2 === 0)
+
+    odd$.subscribe(console.log);
+    // Logs:
+    // 2
+    // 4
+    // 6
+    evens$.subscribe(console.log);
+    // Logs:
+    // 1
+    // 3
+    // 5
+
+    // EXAMPLE 2
+    const source = (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.from)([1, 2, 3, 4, 5, 6]);
+    const example = source.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.map)(
+            v => {
+                if (v > 3) throw `${v} is greater than 3.`;
+                return { success: v }
+            }
+        ),
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_4__.catchError)(val => (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.of)({ error: val }))
+    );
+    const [success, error] = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.partition)(example, res => res.success)
+
+    success.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.map)(v => v.success + ' Success'),
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.mergeWith)(
+            error.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.map)(v => v.error + ' Error'))
+        )
+    ).subscribe(console.log)
+    // Logs:
+    // 1 Success
+    // 2 Success
+    // 3 Success
+    // 4 is greater than 3. Error
+});
+
+
+/***/ }),
+/* 118 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "partition": () => (/* binding */ partition)
+/* harmony export */ });
+/* harmony import */ var _util_not__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(120);
+/* harmony import */ var _operators_filter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(119);
+/* harmony import */ var _innerFrom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(34);
+
+
+
+function partition(source, predicate, thisArg) {
+    return [(0,_operators_filter__WEBPACK_IMPORTED_MODULE_0__.filter)(predicate, thisArg)((0,_innerFrom__WEBPACK_IMPORTED_MODULE_1__.innerFrom)(source)), (0,_operators_filter__WEBPACK_IMPORTED_MODULE_0__.filter)((0,_util_not__WEBPACK_IMPORTED_MODULE_2__.not)(predicate, thisArg))((0,_innerFrom__WEBPACK_IMPORTED_MODULE_1__.innerFrom)(source))];
+}
+//# sourceMappingURL=partition.js.map
+
+/***/ }),
+/* 119 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "filter": () => (/* binding */ filter)
+/* harmony export */ });
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
+
+
+function filter(predicate, thisArg) {
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        var index = 0;
+        source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(subscriber, function (value) { return predicate.call(thisArg, value, index++) && subscriber.next(value); }));
+    });
+}
+//# sourceMappingURL=filter.js.map
+
+/***/ }),
+/* 120 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "not": () => (/* binding */ not)
+/* harmony export */ });
+function not(pred, thisArg) {
+    return function (value, index) { return !pred.call(thisArg, value, index); };
+}
+//# sourceMappingURL=not.js.map
 
 /***/ })
 /******/ 	]);
@@ -4918,7 +5032,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._merge)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._partition)();
 
 })();
 

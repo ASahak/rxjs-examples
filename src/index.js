@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _merge } from './operators';
+import { _partition } from './operators';
 
-_merge();
+_partition();
