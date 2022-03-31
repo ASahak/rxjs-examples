@@ -13,6 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_combineLatestAll": () => (/* reexport safe */ _combineLatestAll__WEBPACK_IMPORTED_MODULE_1__["default"]),
 /* harmony export */   "_combineLatestWith": () => (/* reexport safe */ _combineLatestWith__WEBPACK_IMPORTED_MODULE_0__["default"]),
 /* harmony export */   "_concat": () => (/* reexport safe */ _concat__WEBPACK_IMPORTED_MODULE_17__["default"]),
+/* harmony export */   "_defaultIfEmpty": () => (/* reexport safe */ _defaultIfEmpty__WEBPACK_IMPORTED_MODULE_23__["default"]),
 /* harmony export */   "_defer": () => (/* reexport safe */ _defer__WEBPACK_IMPORTED_MODULE_5__["default"]),
 /* harmony export */   "_empty": () => (/* reexport safe */ _empty__WEBPACK_IMPORTED_MODULE_6__["default"]),
 /* harmony export */   "_forkJoin": () => (/* reexport safe */ _forkJoin__WEBPACK_IMPORTED_MODULE_18__["default"]),
@@ -54,6 +55,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partition__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(117);
 /* harmony import */ var _race__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(121);
 /* harmony import */ var _zipWith__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(127);
+/* harmony import */ var _defaultIfEmpty__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(131);
+
 
 
 
@@ -5305,6 +5308,67 @@ function zip() {
 }
 //# sourceMappingURL=zip.js.map
 
+/***/ }),
+/* 131 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(52);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(90);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(132);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.of)().pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.defaultIfEmpty)('Observable is empty!')
+    ).subscribe(console.log)
+    // Logs:
+    // Observable is empty!
+
+    // EXAMPLE 2
+    ;(0,rxjs__WEBPACK_IMPORTED_MODULE_2__.empty)().pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.defaultIfEmpty)('Observable is empty!')
+    )
+    // Logs:
+    // Observable is empty!
+});
+
+
+/***/ }),
+/* 132 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "defaultIfEmpty": () => (/* binding */ defaultIfEmpty)
+/* harmony export */ });
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
+
+
+function defaultIfEmpty(defaultValue) {
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        var hasValue = false;
+        source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(subscriber, function (value) {
+            hasValue = true;
+            subscriber.next(value);
+        }, function () {
+            if (!hasValue) {
+                subscriber.next(defaultValue);
+            }
+            subscriber.complete();
+        }));
+    });
+}
+//# sourceMappingURL=defaultIfEmpty.js.map
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -5383,7 +5447,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._zipWith)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._defaultIfEmpty)();
 
 })();
 

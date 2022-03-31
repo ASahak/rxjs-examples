@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _zipWith } from './operators';
+import { _defaultIfEmpty } from './operators';
 
-_zipWith();
+_defaultIfEmpty();
