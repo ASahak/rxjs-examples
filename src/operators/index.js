@@ -22,3 +22,4 @@ export { default as _partition } from './partition';
 export { default as _race } from './race';
 export { default as _zipWith } from './zipWith';
 export { default as _defaultIfEmpty } from './defaultIfEmpty';
+export { default as _every } from './every';
