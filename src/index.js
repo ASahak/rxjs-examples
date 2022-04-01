@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _every } from './operators';
+import { _isEmpty } from './operators';
 
-_every();
+_isEmpty();

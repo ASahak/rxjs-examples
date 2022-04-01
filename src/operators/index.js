@@ -23,3 +23,6 @@ export { default as _race } from './race';
 export { default as _zipWith } from './zipWith';
 export { default as _defaultIfEmpty } from './defaultIfEmpty';
 export { default as _every } from './every';
+export { default as _find } from './find';
+export { default as _findIndex } from './findIndex';
+export { default as _isEmpty } from './isEmpty';
