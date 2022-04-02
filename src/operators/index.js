@@ -26,3 +26,6 @@ export { default as _every } from './every';
 export { default as _find } from './find';
 export { default as _findIndex } from './findIndex';
 export { default as _isEmpty } from './isEmpty';
+export { default as _catchError } from './catchError';
+export { default as _retry } from './retry';
+export { default as _audit } from './audit';
