@@ -25,22 +25,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_elementAt": () => (/* reexport safe */ _elementAt__WEBPACK_IMPORTED_MODULE_36__["default"]),
 /* harmony export */   "_empty": () => (/* reexport safe */ _empty__WEBPACK_IMPORTED_MODULE_6__["default"]),
 /* harmony export */   "_every": () => (/* reexport safe */ _every__WEBPACK_IMPORTED_MODULE_24__["default"]),
+/* harmony export */   "_filter": () => (/* reexport safe */ _filter__WEBPACK_IMPORTED_MODULE_37__["default"]),
 /* harmony export */   "_find": () => (/* reexport safe */ _find__WEBPACK_IMPORTED_MODULE_25__["default"]),
 /* harmony export */   "_findIndex": () => (/* reexport safe */ _findIndex__WEBPACK_IMPORTED_MODULE_26__["default"]),
+/* harmony export */   "_first": () => (/* reexport safe */ _first__WEBPACK_IMPORTED_MODULE_38__["default"]),
 /* harmony export */   "_forkJoin": () => (/* reexport safe */ _forkJoin__WEBPACK_IMPORTED_MODULE_18__["default"]),
 /* harmony export */   "_from": () => (/* reexport safe */ _from__WEBPACK_IMPORTED_MODULE_7__["default"]),
 /* harmony export */   "_fromEvent": () => (/* reexport safe */ _fromEvent__WEBPACK_IMPORTED_MODULE_8__["default"]),
 /* harmony export */   "_fromEventPattern": () => (/* reexport safe */ _fromEventPattern__WEBPACK_IMPORTED_MODULE_9__["default"]),
 /* harmony export */   "_generate": () => (/* reexport safe */ _generate__WEBPACK_IMPORTED_MODULE_10__["default"]),
+/* harmony export */   "_ignoreElements": () => (/* reexport safe */ _ignoreElements__WEBPACK_IMPORTED_MODULE_39__["default"]),
 /* harmony export */   "_iif": () => (/* reexport safe */ _iif__WEBPACK_IMPORTED_MODULE_16__["default"]),
 /* harmony export */   "_interval": () => (/* reexport safe */ _interval__WEBPACK_IMPORTED_MODULE_11__["default"]),
 /* harmony export */   "_isEmpty": () => (/* reexport safe */ _isEmpty__WEBPACK_IMPORTED_MODULE_27__["default"]),
+/* harmony export */   "_last": () => (/* reexport safe */ _last__WEBPACK_IMPORTED_MODULE_40__["default"]),
 /* harmony export */   "_mergeWith": () => (/* reexport safe */ _mergeWith__WEBPACK_IMPORTED_MODULE_19__["default"]),
 /* harmony export */   "_of": () => (/* reexport safe */ _of__WEBPACK_IMPORTED_MODULE_12__["default"]),
 /* harmony export */   "_partition": () => (/* reexport safe */ _partition__WEBPACK_IMPORTED_MODULE_20__["default"]),
 /* harmony export */   "_race": () => (/* reexport safe */ _race__WEBPACK_IMPORTED_MODULE_21__["default"]),
 /* harmony export */   "_range": () => (/* reexport safe */ _range__WEBPACK_IMPORTED_MODULE_13__["default"]),
 /* harmony export */   "_retry": () => (/* reexport safe */ _retry__WEBPACK_IMPORTED_MODULE_29__["default"]),
+/* harmony export */   "_sample": () => (/* reexport safe */ _sample__WEBPACK_IMPORTED_MODULE_41__["default"]),
+/* harmony export */   "_sampleTime": () => (/* reexport safe */ _sampleTime__WEBPACK_IMPORTED_MODULE_42__["default"]),
+/* harmony export */   "_single": () => (/* reexport safe */ _single__WEBPACK_IMPORTED_MODULE_43__["default"]),
+/* harmony export */   "_skip": () => (/* reexport safe */ _skip__WEBPACK_IMPORTED_MODULE_44__["default"]),
+/* harmony export */   "_skipLast": () => (/* reexport safe */ _skipLast__WEBPACK_IMPORTED_MODULE_45__["default"]),
+/* harmony export */   "_skipUntil": () => (/* reexport safe */ _skipUntil__WEBPACK_IMPORTED_MODULE_46__["default"]),
+/* harmony export */   "_skipWhile": () => (/* reexport safe */ _skipWhile__WEBPACK_IMPORTED_MODULE_47__["default"]),
 /* harmony export */   "_throwError": () => (/* reexport safe */ _throwError__WEBPACK_IMPORTED_MODULE_14__["default"]),
 /* harmony export */   "_timer": () => (/* reexport safe */ _timer__WEBPACK_IMPORTED_MODULE_15__["default"]),
 /* harmony export */   "_zipWith": () => (/* reexport safe */ _zipWith__WEBPACK_IMPORTED_MODULE_22__["default"])
@@ -79,9 +90,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _debounce__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(149);
 /* harmony import */ var _debounceTime__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(152);
 /* harmony import */ var _distinct__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(154);
-/* harmony import */ var _distinctUntilChanged__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(157);
+/* harmony import */ var _distinctUntilChanged__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(156);
 /* harmony import */ var _distinctUntilKeyChanged__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(158);
 /* harmony import */ var _elementAt__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(160);
+/* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(165);
+/* harmony import */ var _first__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(166);
+/* harmony import */ var _ignoreElements__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(168);
+/* harmony import */ var _last__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(169);
+/* harmony import */ var _sample__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(172);
+/* harmony import */ var _sampleTime__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(174);
+/* harmony import */ var _single__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(176);
+/* harmony import */ var _skip__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(180);
+/* harmony import */ var _skipLast__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(182);
+/* harmony import */ var _skipUntil__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(184);
+/* harmony import */ var _skipWhile__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(186);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6227,47 +6260,11 @@ function distinct(keySelector, flushes) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "distinctUntilChanged": () => (/* binding */ distinctUntilChanged)
-/* harmony export */ });
-/* harmony import */ var _util_identity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(19);
-/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26);
-/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
-
-
-
-function distinctUntilChanged(comparator, keySelector) {
-    if (keySelector === void 0) { keySelector = _util_identity__WEBPACK_IMPORTED_MODULE_0__.identity; }
-    comparator = comparator !== null && comparator !== void 0 ? comparator : defaultCompare;
-    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_1__.operate)(function (source, subscriber) {
-        var previousKey;
-        var first = true;
-        source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__.createOperatorSubscriber)(subscriber, function (value) {
-            var currentKey = keySelector(value);
-            if (first || !comparator(previousKey, currentKey)) {
-                first = false;
-                previousKey = currentKey;
-                subscriber.next(value);
-            }
-        }));
-    });
-}
-function defaultCompare(a, b) {
-    return a === b;
-}
-//# sourceMappingURL=distinctUntilChanged.js.map
-
-/***/ }),
-/* 157 */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(52);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(30);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(156);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(157);
 
 
 
@@ -6299,6 +6296,42 @@ __webpack_require__.r(__webpack_exports__);
     // { name: 'Sue' }
 });
 
+
+/***/ }),
+/* 157 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "distinctUntilChanged": () => (/* binding */ distinctUntilChanged)
+/* harmony export */ });
+/* harmony import */ var _util_identity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(19);
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
+
+
+
+function distinctUntilChanged(comparator, keySelector) {
+    if (keySelector === void 0) { keySelector = _util_identity__WEBPACK_IMPORTED_MODULE_0__.identity; }
+    comparator = comparator !== null && comparator !== void 0 ? comparator : defaultCompare;
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_1__.operate)(function (source, subscriber) {
+        var previousKey;
+        var first = true;
+        source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__.createOperatorSubscriber)(subscriber, function (value) {
+            var currentKey = keySelector(value);
+            if (first || !comparator(previousKey, currentKey)) {
+                first = false;
+                previousKey = currentKey;
+                subscriber.next(value);
+            }
+        }));
+    });
+}
+function defaultCompare(a, b) {
+    return a === b;
+}
+//# sourceMappingURL=distinctUntilChanged.js.map
 
 /***/ }),
 /* 158 */
@@ -6354,7 +6387,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "distinctUntilKeyChanged": () => (/* binding */ distinctUntilKeyChanged)
 /* harmony export */ });
-/* harmony import */ var _distinctUntilChanged__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(156);
+/* harmony import */ var _distinctUntilChanged__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(157);
 
 function distinctUntilKeyChanged(key, compare) {
     return (0,_distinctUntilChanged__WEBPACK_IMPORTED_MODULE_0__.distinctUntilChanged)(function (x, y) { return compare ? compare(x[key], y[key]) : x[key] === y[key]; });
@@ -6484,6 +6517,694 @@ var EmptyError = (0,_createErrorClass__WEBPACK_IMPORTED_MODULE_0__.createErrorCl
 }; });
 //# sourceMappingURL=EmptyError.js.map
 
+/***/ }),
+/* 165 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(119);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const source$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.from)([1, 2, 3, 4, 5, 6]);
+
+    source$.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.filter)(v => v % 2 === 0)
+    ).subscribe(console.log)
+    // Logs:
+    // 2
+    // 4
+    // 6
+});
+
+
+/***/ }),
+/* 166 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(85);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(167);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    const clicks1$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.fromEvent)(document, 'click');
+
+    clicks1$.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.first)()
+    ).subscribe(console.log)
+    // Logs:
+    // emit only first click event
+
+    // EXAMPLE 2
+    const clicks2$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.fromEvent)(document, 'click');
+
+    clicks2$.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.first)(e => e.target.tagName === 'DIV')
+    ).subscribe(console.log)
+    // Logs:
+    // emit only once clicking on div tag
+});
+
+
+/***/ }),
+/* 167 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "first": () => (/* binding */ first)
+/* harmony export */ });
+/* harmony import */ var _util_EmptyError__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(164);
+/* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(119);
+/* harmony import */ var _take__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(96);
+/* harmony import */ var _defaultIfEmpty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(132);
+/* harmony import */ var _throwIfEmpty__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(163);
+/* harmony import */ var _util_identity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+
+
+
+
+
+
+function first(predicate, defaultValue) {
+    var hasDefaultValue = arguments.length >= 2;
+    return function (source) {
+        return source.pipe(predicate ? (0,_filter__WEBPACK_IMPORTED_MODULE_0__.filter)(function (v, i) { return predicate(v, i, source); }) : _util_identity__WEBPACK_IMPORTED_MODULE_1__.identity, (0,_take__WEBPACK_IMPORTED_MODULE_2__.take)(1), hasDefaultValue ? (0,_defaultIfEmpty__WEBPACK_IMPORTED_MODULE_3__.defaultIfEmpty)(defaultValue) : (0,_throwIfEmpty__WEBPACK_IMPORTED_MODULE_4__.throwIfEmpty)(function () { return new _util_EmptyError__WEBPACK_IMPORTED_MODULE_5__.EmptyError(); }));
+    };
+}
+//# sourceMappingURL=first.js.map
+
+/***/ }),
+/* 168 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(52);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(125);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.of)('you', 'are', 'talking', 'to', 'me').pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.ignoreElements)()
+    ).subscribe({
+        next: word => console.log(word),
+        error: err => console.log(err),
+        complete: () => console.log('end'),
+    })
+    // Logs:
+    // end
+});
+
+
+/***/ }),
+/* 169 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(170);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.from)([1, 2, 3, 4]).pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.last)()
+    ).subscribe(console.log)
+    // Logs:
+    // 4
+
+
+    // EXAMPLE 2
+    ;(0,rxjs__WEBPACK_IMPORTED_MODULE_0__.from)([1, 2, 3, 4]).pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.last)(v => v === 5, 'not exits')
+    ).subscribe(console.log)
+    // Logs:
+    // not exits
+});
+
+
+/***/ }),
+/* 170 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "last": () => (/* binding */ last)
+/* harmony export */ });
+/* harmony import */ var _util_EmptyError__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(164);
+/* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(119);
+/* harmony import */ var _takeLast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(171);
+/* harmony import */ var _throwIfEmpty__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(163);
+/* harmony import */ var _defaultIfEmpty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(132);
+/* harmony import */ var _util_identity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+
+
+
+
+
+
+function last(predicate, defaultValue) {
+    var hasDefaultValue = arguments.length >= 2;
+    return function (source) {
+        return source.pipe(predicate ? (0,_filter__WEBPACK_IMPORTED_MODULE_0__.filter)(function (v, i) { return predicate(v, i, source); }) : _util_identity__WEBPACK_IMPORTED_MODULE_1__.identity, (0,_takeLast__WEBPACK_IMPORTED_MODULE_2__.takeLast)(1), hasDefaultValue ? (0,_defaultIfEmpty__WEBPACK_IMPORTED_MODULE_3__.defaultIfEmpty)(defaultValue) : (0,_throwIfEmpty__WEBPACK_IMPORTED_MODULE_4__.throwIfEmpty)(function () { return new _util_EmptyError__WEBPACK_IMPORTED_MODULE_5__.EmptyError(); }));
+    };
+}
+//# sourceMappingURL=last.js.map
+
+/***/ }),
+/* 171 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "takeLast": () => (/* binding */ takeLast)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
+/* harmony import */ var _observable_empty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(90);
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
+
+
+
+
+function takeLast(count) {
+    return count <= 0
+        ? function () { return _observable_empty__WEBPACK_IMPORTED_MODULE_0__.EMPTY; }
+        : (0,_util_lift__WEBPACK_IMPORTED_MODULE_1__.operate)(function (source, subscriber) {
+            var buffer = [];
+            source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__.createOperatorSubscriber)(subscriber, function (value) {
+                buffer.push(value);
+                count < buffer.length && buffer.shift();
+            }, function () {
+                var e_1, _a;
+                try {
+                    for (var buffer_1 = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__values)(buffer), buffer_1_1 = buffer_1.next(); !buffer_1_1.done; buffer_1_1 = buffer_1.next()) {
+                        var value = buffer_1_1.value;
+                        subscriber.next(value);
+                    }
+                }
+                catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                finally {
+                    try {
+                        if (buffer_1_1 && !buffer_1_1.done && (_a = buffer_1.return)) _a.call(buffer_1);
+                    }
+                    finally { if (e_1) throw e_1.error; }
+                }
+                subscriber.complete();
+            }, undefined, function () {
+                buffer = null;
+            }));
+        });
+}
+//# sourceMappingURL=takeLast.js.map
+
+/***/ }),
+/* 172 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(85);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(173);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const seconds = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.interval)(1000);
+    const clicks = (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.fromEvent)(document, 'click');
+
+    seconds.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.sample)(clicks)
+    ).subscribe(console.log)
+    // Logs:
+    // emit the last second value after click
+});
+
+
+/***/ }),
+/* 173 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "sample": () => (/* binding */ sample)
+/* harmony export */ });
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _util_noop__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
+
+
+
+function sample(notifier) {
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        var hasValue = false;
+        var lastValue = null;
+        source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(subscriber, function (value) {
+            hasValue = true;
+            lastValue = value;
+        }));
+        notifier.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(subscriber, function () {
+            if (hasValue) {
+                hasValue = false;
+                var value = lastValue;
+                lastValue = null;
+                subscriber.next(value);
+            }
+        }, _util_noop__WEBPACK_IMPORTED_MODULE_2__.noop));
+    });
+}
+//# sourceMappingURL=sample.js.map
+
+/***/ }),
+/* 174 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(85);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(175);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const clicks = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.fromEvent)(document, 'click');
+
+    clicks.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.sampleTime)(1000)
+    ).subscribe(console.log)
+    // Logs:
+    // emit event value after 1000ms
+});
+
+
+/***/ }),
+/* 175 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "sampleTime": () => (/* binding */ sampleTime)
+/* harmony export */ });
+/* harmony import */ var _scheduler_async__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(73);
+/* harmony import */ var _sample__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(173);
+/* harmony import */ var _observable_interval__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(86);
+
+
+
+function sampleTime(period, scheduler) {
+    if (scheduler === void 0) { scheduler = _scheduler_async__WEBPACK_IMPORTED_MODULE_0__.asyncScheduler; }
+    return (0,_sample__WEBPACK_IMPORTED_MODULE_1__.sample)((0,_observable_interval__WEBPACK_IMPORTED_MODULE_2__.interval)(period, scheduler));
+}
+//# sourceMappingURL=sampleTime.js.map
+
+/***/ }),
+/* 176 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(52);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(177);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    const source1$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.of)(
+        { name: 'Ben' },
+        { name: 'Tracy' },
+        { name: 'Laney' },
+        { name: 'Lily' }
+    )
+
+    source1$.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.single)(v => v.name.startsWith('B'))
+    ).subscribe(console.log)
+    // Logs:
+    // Ben
+
+    // EXAMPLE 2
+    const source2$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.of)(
+        { name: 'Ben' },
+        { name: 'Tracy' },
+        { name: 'Laney' },
+        { name: 'Ben' }
+    )
+
+    source2$.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.single)(v => v.name.startsWith('B'))
+    ).subscribe(console.log)
+    // Logs:
+    // Error emitted: SequenceError('Too many values match')
+});
+
+
+/***/ }),
+/* 177 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "single": () => (/* binding */ single)
+/* harmony export */ });
+/* harmony import */ var _util_EmptyError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(164);
+/* harmony import */ var _util_SequenceError__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(178);
+/* harmony import */ var _util_NotFoundError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(179);
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
+
+
+
+
+
+function single(predicate) {
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        var hasValue = false;
+        var singleValue;
+        var seenValue = false;
+        var index = 0;
+        source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(subscriber, function (value) {
+            seenValue = true;
+            if (!predicate || predicate(value, index++, source)) {
+                hasValue && subscriber.error(new _util_SequenceError__WEBPACK_IMPORTED_MODULE_2__.SequenceError('Too many matching values'));
+                hasValue = true;
+                singleValue = value;
+            }
+        }, function () {
+            if (hasValue) {
+                subscriber.next(singleValue);
+                subscriber.complete();
+            }
+            else {
+                subscriber.error(seenValue ? new _util_NotFoundError__WEBPACK_IMPORTED_MODULE_3__.NotFoundError('No matching values') : new _util_EmptyError__WEBPACK_IMPORTED_MODULE_4__.EmptyError());
+            }
+        }));
+    });
+}
+//# sourceMappingURL=single.js.map
+
+/***/ }),
+/* 178 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SequenceError": () => (/* binding */ SequenceError)
+/* harmony export */ });
+/* harmony import */ var _createErrorClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
+
+var SequenceError = (0,_createErrorClass__WEBPACK_IMPORTED_MODULE_0__.createErrorClass)(function (_super) {
+    return function SequenceErrorImpl(message) {
+        _super(this);
+        this.name = 'SequenceError';
+        this.message = message;
+    };
+});
+//# sourceMappingURL=SequenceError.js.map
+
+/***/ }),
+/* 179 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "NotFoundError": () => (/* binding */ NotFoundError)
+/* harmony export */ });
+/* harmony import */ var _createErrorClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
+
+var NotFoundError = (0,_createErrorClass__WEBPACK_IMPORTED_MODULE_0__.createErrorClass)(function (_super) {
+    return function NotFoundErrorImpl(message) {
+        _super(this);
+        this.name = 'NotFoundError';
+        this.message = message;
+    };
+});
+//# sourceMappingURL=NotFoundError.js.map
+
+/***/ }),
+/* 180 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(181);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const seconds = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.interval)(500);
+
+    seconds.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.skip)(10)
+    ).subscribe(console.log)
+    // Logs:
+    // emit the timer value after 10th
+});
+
+
+/***/ }),
+/* 181 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "skip": () => (/* binding */ skip)
+/* harmony export */ });
+/* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(119);
+
+function skip(count) {
+    return (0,_filter__WEBPACK_IMPORTED_MODULE_0__.filter)(function (_, index) { return count <= index; });
+}
+//# sourceMappingURL=skip.js.map
+
+/***/ }),
+/* 182 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(52);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(183);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const numbers = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.of)(1, 2, 3, 4, 5);
+    numbers.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.skipLast)(2)
+    ).subscribe(console.log);
+    // Logs:
+    // 1
+    // 2
+    // 3
+});
+
+
+/***/ }),
+/* 183 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "skipLast": () => (/* binding */ skipLast)
+/* harmony export */ });
+/* harmony import */ var _util_identity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(19);
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
+
+
+
+function skipLast(skipCount) {
+    return skipCount <= 0
+        ?
+            _util_identity__WEBPACK_IMPORTED_MODULE_0__.identity
+        : (0,_util_lift__WEBPACK_IMPORTED_MODULE_1__.operate)(function (source, subscriber) {
+            var ring = new Array(skipCount);
+            var seen = 0;
+            source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__.createOperatorSubscriber)(subscriber, function (value) {
+                var valueIndex = seen++;
+                if (valueIndex < skipCount) {
+                    ring[valueIndex] = value;
+                }
+                else {
+                    var index = valueIndex % skipCount;
+                    var oldValue = ring[index];
+                    ring[index] = value;
+                    subscriber.next(oldValue);
+                }
+            }));
+            return function () {
+                ring = null;
+            };
+        });
+}
+//# sourceMappingURL=skipLast.js.map
+
+/***/ }),
+/* 184 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(85);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(185);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const seconds = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.interval)(1000);
+    const clicks$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.fromEvent)(document, 'click');
+
+    seconds.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.skipUntil)(clicks$)
+    ).subscribe(console.log)
+    // Logs:
+    // emit interval value after click event
+});
+
+
+/***/ }),
+/* 185 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "skipUntil": () => (/* binding */ skipUntil)
+/* harmony export */ });
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
+/* harmony import */ var _observable_innerFrom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(34);
+/* harmony import */ var _util_noop__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
+
+
+
+
+function skipUntil(notifier) {
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        var taking = false;
+        var skipSubscriber = (0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(subscriber, function () {
+            skipSubscriber === null || skipSubscriber === void 0 ? void 0 : skipSubscriber.unsubscribe();
+            taking = true;
+        }, _util_noop__WEBPACK_IMPORTED_MODULE_2__.noop);
+        (0,_observable_innerFrom__WEBPACK_IMPORTED_MODULE_3__.innerFrom)(notifier).subscribe(skipSubscriber);
+        source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(subscriber, function (value) { return taking && subscriber.next(value); }));
+    });
+}
+//# sourceMappingURL=skipUntil.js.map
+
+/***/ }),
+/* 186 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(187);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    const source1$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.from)(['Green Arrow', 'SuperMan', 'Flash', 'SuperGirl', 'Black Canary'])
+
+    source1$.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.skipWhile)(v => v !== 'SuperGirl')
+    ).subscribe(console.log)
+    // Logs:
+    // SuperGirl
+    // Black Canary
+
+    // EXAMPLE 2
+    const source2$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.from)([1, 2, 3, 4, 5, 6, 7, 9, 10]);
+    source2$.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.skipWhile)((_, i) => i !== 5)
+    ).subscribe(console.log);
+    // Logs:
+    // Skip value from the array until index 5
+    // 6, 7, 9, 10
+});
+
+
+/***/ }),
+/* 187 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "skipWhile": () => (/* binding */ skipWhile)
+/* harmony export */ });
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
+
+
+function skipWhile(predicate) {
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        var taking = false;
+        var index = 0;
+        source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(subscriber, function (value) { return (taking || (taking = !predicate(value, index++))) && subscriber.next(value); }));
+    });
+}
+//# sourceMappingURL=skipWhile.js.map
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -6562,7 +7283,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._elementAt)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._skipWhile)();
 
 })();
 

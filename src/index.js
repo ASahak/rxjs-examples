@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _elementAt } from './operators';
+import { _skipWhile } from './operators';
 
-_elementAt();
+_skipWhile();
