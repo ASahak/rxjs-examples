@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _skipWhile } from './operators';
+import { _throttleTime } from './operators';
 
-_skipWhile();
+_throttleTime();

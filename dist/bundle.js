@@ -52,6 +52,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_skipLast": () => (/* reexport safe */ _skipLast__WEBPACK_IMPORTED_MODULE_45__["default"]),
 /* harmony export */   "_skipUntil": () => (/* reexport safe */ _skipUntil__WEBPACK_IMPORTED_MODULE_46__["default"]),
 /* harmony export */   "_skipWhile": () => (/* reexport safe */ _skipWhile__WEBPACK_IMPORTED_MODULE_47__["default"]),
+/* harmony export */   "_take": () => (/* reexport safe */ _take__WEBPACK_IMPORTED_MODULE_48__["default"]),
+/* harmony export */   "_takeLast": () => (/* reexport safe */ _takeLast__WEBPACK_IMPORTED_MODULE_49__["default"]),
+/* harmony export */   "_takeUntil": () => (/* reexport safe */ _takeUntil__WEBPACK_IMPORTED_MODULE_50__["default"]),
+/* harmony export */   "_takeWhile": () => (/* reexport safe */ _takeWhile__WEBPACK_IMPORTED_MODULE_51__["default"]),
+/* harmony export */   "_throttle": () => (/* reexport safe */ _throttle__WEBPACK_IMPORTED_MODULE_52__["default"]),
+/* harmony export */   "_throttleTime": () => (/* reexport safe */ _throttleTime__WEBPACK_IMPORTED_MODULE_53__["default"]),
 /* harmony export */   "_throwError": () => (/* reexport safe */ _throwError__WEBPACK_IMPORTED_MODULE_14__["default"]),
 /* harmony export */   "_timer": () => (/* reexport safe */ _timer__WEBPACK_IMPORTED_MODULE_15__["default"]),
 /* harmony export */   "_zipWith": () => (/* reexport safe */ _zipWith__WEBPACK_IMPORTED_MODULE_22__["default"])
@@ -104,6 +110,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _skipLast__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(182);
 /* harmony import */ var _skipUntil__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(184);
 /* harmony import */ var _skipWhile__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(186);
+/* harmony import */ var _take__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(188);
+/* harmony import */ var _takeLast__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(189);
+/* harmony import */ var _takeUntil__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(190);
+/* harmony import */ var _takeWhile__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(192);
+/* harmony import */ var _throttle__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(194);
+/* harmony import */ var _throttleTime__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(196);
+
+
+
+
+
+
 
 
 
@@ -7205,6 +7223,355 @@ function skipWhile(predicate) {
 }
 //# sourceMappingURL=skipWhile.js.map
 
+/***/ }),
+/* 188 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(52);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(96);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    const intervalCount = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.interval)(1000);
+    const takeFive = intervalCount.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.take)(5));
+    takeFive.subscribe(x => console.log(x));
+
+    // Logs:
+    // 0
+    // 1
+    // 2
+    // 3
+    // 4
+
+    // EXAMPLE 2
+    const source = (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.of)(1, 2, 3, 4, 5);
+    source.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.take)(1)
+    ).subscribe(console.log)
+    // Logs:
+    // 1
+});
+
+
+/***/ }),
+/* 189 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(105);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(52);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(171);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    const many = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.range)(1, 100);
+    const lastThree = many.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.takeLast)(3));
+    lastThree.subscribe(console.log)
+    // Logs:
+    // 98
+    // 99
+    // 100
+
+    // EXAMPLE 2
+    const source = (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.of)('Ignore', 'Ignore', 'Hello', 'World!');
+    source.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.takeLast)(2)
+    ).subscribe(console.log);
+    // Logs:
+    // Hello
+    // World!
+});
+
+
+/***/ }),
+/* 190 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(87);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(85);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(191);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    const source1$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.interval)(1000);
+    const timer$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.timer)(5000);
+    source1$.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.takeUntil)(timer$)
+    ).subscribe(console.log);
+    // Logs:
+    // 0
+    // 1
+    // 2
+    // 3
+
+    // EXAMPLE 2
+    const source2$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.interval)(1000);
+    const clicks = (0,rxjs__WEBPACK_IMPORTED_MODULE_3__.fromEvent)(document, 'click');
+    source2$.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.takeUntil)(clicks)
+    ).subscribe(console.log)
+});
+
+
+/***/ }),
+/* 191 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "takeUntil": () => (/* binding */ takeUntil)
+/* harmony export */ });
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
+/* harmony import */ var _observable_innerFrom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(34);
+/* harmony import */ var _util_noop__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16);
+
+
+
+
+function takeUntil(notifier) {
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        (0,_observable_innerFrom__WEBPACK_IMPORTED_MODULE_1__.innerFrom)(notifier).subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__.createOperatorSubscriber)(subscriber, function () { return subscriber.complete(); }, _util_noop__WEBPACK_IMPORTED_MODULE_3__.noop));
+        !subscriber.closed && source.subscribe(subscriber);
+    });
+}
+//# sourceMappingURL=takeUntil.js.map
+
+/***/ }),
+/* 192 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(85);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(52);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(193);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    const clicks = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.fromEvent)(document, 'click');
+    clicks.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.takeWhile)(ev => ev.clientX > 200)
+    ).subscribe(console.log)
+
+    // EXAMPLE 2
+    const source$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.of)(1, 2, 3, 4, 5);
+    source$
+        .pipe(
+            (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.takeWhile)(val => val <= 4)
+        ).subscribe(val => console.log(val));
+    // Logs:
+    // 1,2,3,4
+});
+
+
+/***/ }),
+/* 193 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "takeWhile": () => (/* binding */ takeWhile)
+/* harmony export */ });
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
+
+
+function takeWhile(predicate, inclusive) {
+    if (inclusive === void 0) { inclusive = false; }
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        var index = 0;
+        source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(subscriber, function (value) {
+            var result = predicate(value, index++);
+            (result || inclusive) && subscriber.next(value);
+            !result && subscriber.complete();
+        }));
+    });
+}
+//# sourceMappingURL=takeWhile.js.map
+
+/***/ }),
+/* 194 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(85);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(86);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(195);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    const clicks = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.fromEvent)(document, 'click');
+    clicks.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.throttle)(_val => (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.interval)(1000))
+    ).subscribe(console.log)
+
+    // EXAMPLE 2
+    const source1$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.interval)(1000);
+    source1$
+        .pipe(
+            (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.throttle)(_val => (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.interval)(2000))
+        ).subscribe(val => console.log(val));
+    // Logs:
+    // 0...3...6...9
+});
+
+
+/***/ }),
+/* 195 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "defaultThrottleConfig": () => (/* binding */ defaultThrottleConfig),
+/* harmony export */   "throttle": () => (/* binding */ throttle)
+/* harmony export */ });
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
+/* harmony import */ var _observable_innerFrom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(34);
+
+
+
+var defaultThrottleConfig = {
+    leading: true,
+    trailing: false,
+};
+function throttle(durationSelector, config) {
+    if (config === void 0) { config = defaultThrottleConfig; }
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        var leading = config.leading, trailing = config.trailing;
+        var hasValue = false;
+        var sendValue = null;
+        var throttled = null;
+        var isComplete = false;
+        var endThrottling = function () {
+            throttled === null || throttled === void 0 ? void 0 : throttled.unsubscribe();
+            throttled = null;
+            if (trailing) {
+                send();
+                isComplete && subscriber.complete();
+            }
+        };
+        var cleanupThrottling = function () {
+            throttled = null;
+            isComplete && subscriber.complete();
+        };
+        var startThrottle = function (value) {
+            return (throttled = (0,_observable_innerFrom__WEBPACK_IMPORTED_MODULE_1__.innerFrom)(durationSelector(value)).subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__.createOperatorSubscriber)(subscriber, endThrottling, cleanupThrottling)));
+        };
+        var send = function () {
+            if (hasValue) {
+                hasValue = false;
+                var value = sendValue;
+                sendValue = null;
+                subscriber.next(value);
+                !isComplete && startThrottle(value);
+            }
+        };
+        source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__.createOperatorSubscriber)(subscriber, function (value) {
+            hasValue = true;
+            sendValue = value;
+            !(throttled && !throttled.closed) && (leading ? send() : startThrottle(value));
+        }, function () {
+            isComplete = true;
+            !(trailing && hasValue && throttled && !throttled.closed) && subscriber.complete();
+        }));
+    });
+}
+//# sourceMappingURL=throttle.js.map
+
+/***/ }),
+/* 196 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(85);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(86);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(197);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    // EXAMPLE 1
+    const clicks = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.fromEvent)(document, 'click');
+    clicks.pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.throttleTime)(1000)
+    ).subscribe(console.log)
+
+    // EXAMPLE 2
+    const source1$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.interval)(1000);
+    source1$
+        .pipe(
+            (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.throttleTime)(5000)
+        ).subscribe(val => console.log(val));
+    // Logs:
+    // 0...6...12
+});
+
+
+/***/ }),
+/* 197 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "throttleTime": () => (/* binding */ throttleTime)
+/* harmony export */ });
+/* harmony import */ var _scheduler_async__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(73);
+/* harmony import */ var _throttle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(195);
+/* harmony import */ var _observable_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(87);
+
+
+
+function throttleTime(duration, scheduler, config) {
+    if (scheduler === void 0) { scheduler = _scheduler_async__WEBPACK_IMPORTED_MODULE_0__.asyncScheduler; }
+    if (config === void 0) { config = _throttle__WEBPACK_IMPORTED_MODULE_1__.defaultThrottleConfig; }
+    var duration$ = (0,_observable_timer__WEBPACK_IMPORTED_MODULE_2__.timer)(duration, scheduler);
+    return (0,_throttle__WEBPACK_IMPORTED_MODULE_1__.throttle)(function () { return duration$; }, config);
+}
+//# sourceMappingURL=throttleTime.js.map
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -7283,7 +7650,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._skipWhile)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._throttleTime)();
 
 })();
 
