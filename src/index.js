@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _throttleTime } from './operators';
+import { _bufferWhen } from './operators';
 
-_throttleTime();
+_bufferWhen();
