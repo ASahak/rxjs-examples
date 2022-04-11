@@ -58,3 +58,6 @@ export { default as _bufferCount } from './bufferCount';
 export { default as _bufferTime } from './bufferTime';
 export { default as _bufferToggle } from './bufferToggle';
 export { default as _bufferWhen } from './bufferWhen';
+export { default as _concatMap } from './concatMap';
+export { default as _exhaustAll } from './exhaustAll';
+export { default as _exhaustMap } from './exhaustMap';
