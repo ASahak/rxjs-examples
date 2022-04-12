@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _exhaustMap } from './operators';
+import { _groupBy } from './operators';
 
-_exhaustMap();
+_groupBy();

@@ -33,6 +33,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_every": () => (/* reexport safe */ _every__WEBPACK_IMPORTED_MODULE_24__["default"]),
 /* harmony export */   "_exhaustAll": () => (/* reexport safe */ _exhaustAll__WEBPACK_IMPORTED_MODULE_61__["default"]),
 /* harmony export */   "_exhaustMap": () => (/* reexport safe */ _exhaustMap__WEBPACK_IMPORTED_MODULE_62__["default"]),
+/* harmony export */   "_expand": () => (/* reexport safe */ _expand__WEBPACK_IMPORTED_MODULE_63__["default"]),
 /* harmony export */   "_filter": () => (/* reexport safe */ _filter__WEBPACK_IMPORTED_MODULE_37__["default"]),
 /* harmony export */   "_find": () => (/* reexport safe */ _find__WEBPACK_IMPORTED_MODULE_25__["default"]),
 /* harmony export */   "_findIndex": () => (/* reexport safe */ _findIndex__WEBPACK_IMPORTED_MODULE_26__["default"]),
@@ -42,6 +43,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_fromEvent": () => (/* reexport safe */ _fromEvent__WEBPACK_IMPORTED_MODULE_8__["default"]),
 /* harmony export */   "_fromEventPattern": () => (/* reexport safe */ _fromEventPattern__WEBPACK_IMPORTED_MODULE_9__["default"]),
 /* harmony export */   "_generate": () => (/* reexport safe */ _generate__WEBPACK_IMPORTED_MODULE_10__["default"]),
+/* harmony export */   "_groupBy": () => (/* reexport safe */ _groupBy__WEBPACK_IMPORTED_MODULE_64__["default"]),
 /* harmony export */   "_ignoreElements": () => (/* reexport safe */ _ignoreElements__WEBPACK_IMPORTED_MODULE_39__["default"]),
 /* harmony export */   "_iif": () => (/* reexport safe */ _iif__WEBPACK_IMPORTED_MODULE_16__["default"]),
 /* harmony export */   "_interval": () => (/* reexport safe */ _interval__WEBPACK_IMPORTED_MODULE_11__["default"]),
@@ -134,6 +136,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _concatMap__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(210);
 /* harmony import */ var _exhaustAll__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(212);
 /* harmony import */ var _exhaustMap__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(214);
+/* harmony import */ var _expand__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(217);
+/* harmony import */ var _groupBy__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(219);
+
+
 
 
 
@@ -8397,6 +8403,181 @@ function exhaustMap(project, resultSelector) {
 }
 //# sourceMappingURL=exhaustMap.js.map
 
+/***/ }),
+/* 217 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(52);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(218);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(96);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const source = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.of)(2);
+    source.pipe(
+        //recursively call supplied function
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.expand)(val => {
+            return (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.of)(1 + val);
+        }),
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(5)
+    ).subscribe(console.log);
+    // Logs:
+    // 2
+    // 3
+    // 4
+    // 5
+    // 6
+});
+
+
+/***/ }),
+/* 218 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "expand": () => (/* binding */ expand)
+/* harmony export */ });
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _mergeInternals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(60);
+
+
+function expand(project, concurrent, scheduler) {
+    if (concurrent === void 0) { concurrent = Infinity; }
+    concurrent = (concurrent || 0) < 1 ? Infinity : concurrent;
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        return (0,_mergeInternals__WEBPACK_IMPORTED_MODULE_1__.mergeInternals)(source, subscriber, project, concurrent, undefined, true, scheduler);
+    });
+}
+//# sourceMappingURL=expand.js.map
+
+/***/ }),
+/* 219 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(130);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(52);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(220);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(59);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(56);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    const people = [
+        { name: 'Sue', age: 25 },
+        { name: 'Joe', age: 30 },
+        { name: 'Frank', age: 25 },
+        { name: 'Sarah', age: 35 }
+    ];
+
+    (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.from)(people)
+    .pipe(
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.groupBy)(
+            person => person.age
+        ),
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.mergeMap)(group => (0,rxjs__WEBPACK_IMPORTED_MODULE_3__.zip)((0,rxjs__WEBPACK_IMPORTED_MODULE_4__.of)(group.key), group.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.toArray)())))
+    )
+    .subscribe(console.log);
+    // Logs:
+    // [25, [{ name: 'Sue', age: 25 }, { name: 'Frank', age: 25 }]]
+    // [30, [{ name: 'Joe', age: 30 }]]
+    // [35, [{ name: 'Sarah', age: 35 }]]
+
+});
+
+
+/***/ }),
+/* 220 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "groupBy": () => (/* binding */ groupBy)
+/* harmony export */ });
+/* harmony import */ var _Observable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
+/* harmony import */ var _observable_innerFrom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(34);
+/* harmony import */ var _Subject__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(71);
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
+
+
+
+
+
+function groupBy(keySelector, elementOrOptions, duration, connector) {
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        var element;
+        if (!elementOrOptions || typeof elementOrOptions === 'function') {
+            element = elementOrOptions;
+        }
+        else {
+            (duration = elementOrOptions.duration, element = elementOrOptions.element, connector = elementOrOptions.connector);
+        }
+        var groups = new Map();
+        var notify = function (cb) {
+            groups.forEach(cb);
+            cb(subscriber);
+        };
+        var handleError = function (err) { return notify(function (consumer) { return consumer.error(err); }); };
+        var activeGroups = 0;
+        var teardownAttempted = false;
+        var groupBySourceSubscriber = new _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.OperatorSubscriber(subscriber, function (value) {
+            try {
+                var key_1 = keySelector(value);
+                var group_1 = groups.get(key_1);
+                if (!group_1) {
+                    groups.set(key_1, (group_1 = connector ? connector() : new _Subject__WEBPACK_IMPORTED_MODULE_2__.Subject()));
+                    var grouped = createGroupedObservable(key_1, group_1);
+                    subscriber.next(grouped);
+                    if (duration) {
+                        var durationSubscriber_1 = (0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(group_1, function () {
+                            group_1.complete();
+                            durationSubscriber_1 === null || durationSubscriber_1 === void 0 ? void 0 : durationSubscriber_1.unsubscribe();
+                        }, undefined, undefined, function () { return groups.delete(key_1); });
+                        groupBySourceSubscriber.add((0,_observable_innerFrom__WEBPACK_IMPORTED_MODULE_3__.innerFrom)(duration(grouped)).subscribe(durationSubscriber_1));
+                    }
+                }
+                group_1.next(element ? element(value) : value);
+            }
+            catch (err) {
+                handleError(err);
+            }
+        }, function () { return notify(function (consumer) { return consumer.complete(); }); }, handleError, function () { return groups.clear(); }, function () {
+            teardownAttempted = true;
+            return activeGroups === 0;
+        });
+        source.subscribe(groupBySourceSubscriber);
+        function createGroupedObservable(key, groupSubject) {
+            var result = new _Observable__WEBPACK_IMPORTED_MODULE_4__.Observable(function (groupSubscriber) {
+                activeGroups++;
+                var innerSub = groupSubject.subscribe(groupSubscriber);
+                return function () {
+                    innerSub.unsubscribe();
+                    --activeGroups === 0 && teardownAttempted && groupBySourceSubscriber.unsubscribe();
+                };
+            });
+            result.key = key;
+            return result;
+        }
+    });
+}
+//# sourceMappingURL=groupBy.js.map
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -8475,7 +8656,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._exhaustMap)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._groupBy)();
 
 })();
 

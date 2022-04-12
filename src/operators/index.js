@@ -61,3 +61,5 @@ export { default as _bufferWhen } from './bufferWhen';
 export { default as _concatMap } from './concatMap';
 export { default as _exhaustAll } from './exhaustAll';
 export { default as _exhaustMap } from './exhaustMap';
+export { default as _expand } from './expand';
+export { default as _groupBy } from './groupBy';
