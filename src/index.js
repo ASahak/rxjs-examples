@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _groupBy } from './operators';
+import { _window } from './operators';
 
-_groupBy();
+_window();

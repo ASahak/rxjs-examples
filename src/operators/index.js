@@ -63,3 +63,7 @@ export { default as _exhaustAll } from './exhaustAll';
 export { default as _exhaustMap } from './exhaustMap';
 export { default as _expand } from './expand';
 export { default as _groupBy } from './groupBy';
+export { default as _mergeScan } from './mergeScan';
+export { default as _switchScan } from './switchScan';
+export { default as _switchMap } from './switchMap';
+export { default as _window } from './window';
