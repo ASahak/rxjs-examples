@@ -25,6 +25,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_debounceTime": () => (/* reexport safe */ _debounceTime__WEBPACK_IMPORTED_MODULE_32__["default"]),
 /* harmony export */   "_defaultIfEmpty": () => (/* reexport safe */ _defaultIfEmpty__WEBPACK_IMPORTED_MODULE_23__["default"]),
 /* harmony export */   "_defer": () => (/* reexport safe */ _defer__WEBPACK_IMPORTED_MODULE_5__["default"]),
+/* harmony export */   "_dematerialize": () => (/* reexport safe */ _dematerialize__WEBPACK_IMPORTED_MODULE_69__["default"]),
 /* harmony export */   "_distinct": () => (/* reexport safe */ _distinct__WEBPACK_IMPORTED_MODULE_33__["default"]),
 /* harmony export */   "_distinctUntilChanged": () => (/* reexport safe */ _distinctUntilChanged__WEBPACK_IMPORTED_MODULE_34__["default"]),
 /* harmony export */   "_distinctUntilKeyChanged": () => (/* reexport safe */ _distinctUntilKeyChanged__WEBPACK_IMPORTED_MODULE_35__["default"]),
@@ -146,6 +147,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _switchScan__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(223);
 /* harmony import */ var _switchMap__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(226);
 /* harmony import */ var _window__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(227);
+/* harmony import */ var _dematerialize__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(229);
+
 
 
 
@@ -8847,6 +8850,150 @@ function window(windowBoundaries) {
 }
 //# sourceMappingURL=window.js.map
 
+/***/ }),
+/* 229 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(230);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(231);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
+    //emit next and error notifications
+    const source = (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.from)([
+        rxjs__WEBPACK_IMPORTED_MODULE_1__.Notification.createNext('SUCCESS!'),
+        rxjs__WEBPACK_IMPORTED_MODULE_1__.Notification.createError('ERROR!')
+    ]).pipe(
+        //turn notification objects into notification values
+        (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.dematerialize)()
+    );
+
+    const subscription = source.subscribe({
+        next: val => console.log(`NEXT VALUE: ${val}`),
+        error: val => console.log(`ERROR VALUE: ${val}`)
+    });
+    // Logs:
+    // 'NEXT VALUE: SUCCESS' 'ERROR VALUE: 'ERROR!'
+});
+
+
+/***/ }),
+/* 230 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Notification": () => (/* binding */ Notification),
+/* harmony export */   "NotificationKind": () => (/* binding */ NotificationKind),
+/* harmony export */   "observeNotification": () => (/* binding */ observeNotification)
+/* harmony export */ });
+/* harmony import */ var _observable_empty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(90);
+/* harmony import */ var _observable_of__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(52);
+/* harmony import */ var _observable_throwError__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(107);
+/* harmony import */ var _util_isFunction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
+
+
+
+
+var NotificationKind;
+(function (NotificationKind) {
+    NotificationKind["NEXT"] = "N";
+    NotificationKind["ERROR"] = "E";
+    NotificationKind["COMPLETE"] = "C";
+})(NotificationKind || (NotificationKind = {}));
+var Notification = (function () {
+    function Notification(kind, value, error) {
+        this.kind = kind;
+        this.value = value;
+        this.error = error;
+        this.hasValue = kind === 'N';
+    }
+    Notification.prototype.observe = function (observer) {
+        return observeNotification(this, observer);
+    };
+    Notification.prototype.do = function (nextHandler, errorHandler, completeHandler) {
+        var _a = this, kind = _a.kind, value = _a.value, error = _a.error;
+        return kind === 'N' ? nextHandler === null || nextHandler === void 0 ? void 0 : nextHandler(value) : kind === 'E' ? errorHandler === null || errorHandler === void 0 ? void 0 : errorHandler(error) : completeHandler === null || completeHandler === void 0 ? void 0 : completeHandler();
+    };
+    Notification.prototype.accept = function (nextOrObserver, error, complete) {
+        var _a;
+        return (0,_util_isFunction__WEBPACK_IMPORTED_MODULE_0__.isFunction)((_a = nextOrObserver) === null || _a === void 0 ? void 0 : _a.next)
+            ? this.observe(nextOrObserver)
+            : this.do(nextOrObserver, error, complete);
+    };
+    Notification.prototype.toObservable = function () {
+        var _a = this, kind = _a.kind, value = _a.value, error = _a.error;
+        var result = kind === 'N'
+            ?
+                (0,_observable_of__WEBPACK_IMPORTED_MODULE_1__.of)(value)
+            :
+                kind === 'E'
+                    ?
+                        (0,_observable_throwError__WEBPACK_IMPORTED_MODULE_2__.throwError)(function () { return error; })
+                    :
+                        kind === 'C'
+                            ?
+                                _observable_empty__WEBPACK_IMPORTED_MODULE_3__.EMPTY
+                            :
+                                0;
+        if (!result) {
+            throw new TypeError("Unexpected notification kind " + kind);
+        }
+        return result;
+    };
+    Notification.createNext = function (value) {
+        return new Notification('N', value);
+    };
+    Notification.createError = function (err) {
+        return new Notification('E', undefined, err);
+    };
+    Notification.createComplete = function () {
+        return Notification.completeNotification;
+    };
+    Notification.completeNotification = new Notification('C');
+    return Notification;
+}());
+
+function observeNotification(notification, observer) {
+    var _a, _b, _c;
+    var _d = notification, kind = _d.kind, value = _d.value, error = _d.error;
+    if (typeof kind !== 'string') {
+        throw new TypeError('Invalid notification, missing "kind"');
+    }
+    kind === 'N' ? (_a = observer.next) === null || _a === void 0 ? void 0 : _a.call(observer, value) : kind === 'E' ? (_b = observer.error) === null || _b === void 0 ? void 0 : _b.call(observer, error) : (_c = observer.complete) === null || _c === void 0 ? void 0 : _c.call(observer);
+}
+//# sourceMappingURL=Notification.js.map
+
+/***/ }),
+/* 231 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "dematerialize": () => (/* binding */ dematerialize)
+/* harmony export */ });
+/* harmony import */ var _Notification__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(230);
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
+
+
+
+function dematerialize() {
+    return (0,_util_lift__WEBPACK_IMPORTED_MODULE_0__.operate)(function (source, subscriber) {
+        source.subscribe((0,_OperatorSubscriber__WEBPACK_IMPORTED_MODULE_1__.createOperatorSubscriber)(subscriber, function (notification) { return (0,_Notification__WEBPACK_IMPORTED_MODULE_2__.observeNotification)(notification, subscriber); }));
+    });
+}
+//# sourceMappingURL=dematerialize.js.map
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -8925,7 +9072,7 @@ __webpack_require__.r(__webpack_exports__);
 // Import any operator what you want
 
 
-(0,_operators__WEBPACK_IMPORTED_MODULE_0__._window)();
+(0,_operators__WEBPACK_IMPORTED_MODULE_0__._dematerialize)();
 
 })();
 

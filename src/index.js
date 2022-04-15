@@ -1,4 +1,4 @@
 // Import any operator what you want
-import { _window } from './operators';
+import { _dematerialize } from './operators';
 
-_window();
+_dematerialize();

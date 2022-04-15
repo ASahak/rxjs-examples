@@ -67,3 +67,4 @@ export { default as _mergeScan } from './mergeScan';
 export { default as _switchScan } from './switchScan';
 export { default as _switchMap } from './switchMap';
 export { default as _window } from './window';
+export { default as _dematerialize } from './dematerialize';
